@@ -1,9 +1,8 @@
 <h1>Active Directory User Management & Troubleshooting Home Lab</h1>
 
 <h2>Description:</h2>
-This lab builds a simulated enterprise network using Active Directory. A Domain Controller was configured with DNS and DHCP, a client machine was joined to the domain, and PowerShell was used to automate user creation. It demonstrates real-world skills in system administration, network management, and identity control.
+This lab covers core Microsoft Active Directory tasks. You create and manage user accounts, reset passwords, unlock and disable users, and control access with groups and permissions. You also troubleshoot issues like trust relationship errors, building key identity and access management skills.
 <br />
-
 
 <h2>Languages and Technologies Used:</h2>
 
