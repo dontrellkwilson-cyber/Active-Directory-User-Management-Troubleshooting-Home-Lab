@@ -20,6 +20,7 @@ This lab covers core Microsoft Active Directory tasks. You create and manage use
 
 <h2>Lab Walk-Through:</h2>
 
+**`Phase 1: Environment Setup`**
 <p align="center">
 Server Setup & Domain Controller Configuration: <br />
 
@@ -105,6 +106,7 @@ Confirmation of Creation of the DC
 - Network settings applied and verified for connectivity.
 - Installed Active Directory and promoted the server to a DC.
 
+**`Phase 2: Environment Setup`**
 <p align="center">
 Active Directory Installation and Domain Setup:  <br/>
  
