@@ -14,31 +14,97 @@ This lab covers core Microsoft Active Directory tasks. You create and manage use
 
 <h2>Environments Used:</h2>
 
-- <b>VirtualBox 10</b>
-- <b>Windows 10</b> (21H2)
-- <b>Windows Server 2022</b>
-
-<h2>Network Diagram:</h2>
-<img width="1239" height="749" alt="Image" src="https://github.com/user-attachments/assets/5700374f-8276-4054-962e-7421f61d373d" />
+ - <b>VirtualBox 10</b>
+ - <b>Windows 10</b> (21H2)
+ - <b>Windows Server 2022</b>
 
 <h2>Lab Walk-Through:</h2>
 
 <p align="center">
-IP Addressing and Network Configuration: <br />
+Server Setup & Domain Controller Configuration: <br />
 
-<p align="center">
- <img src="https://github.com/user-attachments/assets/697e368a-3ad4-41b8-af02-2df31b9223ac" width="260"/>
- &nbsp;&nbsp;&nbsp;&nbsp; <img src="https://github.com/user-attachments/assets/47e9cff0-67ae-411c-9b32-6ae93d4f1d7e" width="260"/>
-
-**` Tasks Completed `**
-- Configured static IP on Windows Server (Domain Controller). 
-- Assigned IP address **172.16.0.1**, subnet mask **255.255.255.0**, and DNS **127.0.0.1**.  
-- Set DNS to point to the Domain Controller.
-- No default gateway was configured because the lab uses an isolated internal network. All communication occurs within the local environment between the Domain Controller and the client system.  
+**` Active Directory Purpose & Key Concepts `** 
+  -  The server promoted to a domain controller is the most important system in a company’s network, as it hosts Active Directory.
+  -  Active Directory provides centralized identity and access management.
+  -  A domain controller hosts Active Directory and handles authentication and security policies across the network.
+  -  Active Directory manages authentication, passwords, logins, users, groups, and computers, and controls access through permissions and group policies.
+  -  Group Policy Objects enforce security settings and system configurations.
+  -  Active Directory also supports least privilege access to protect network resources.
 
 **` Overview `** 
--  This step establishes network communication by assigning a static IP address to the Domain Controller. Proper IP configuration ensures reliable connectivity and supports Active Directory, DNS, and DHCP services.
+-  This step prepares the server for domain controller deployment. The process includes renaming the server, configuring network adapters, and assigning a static IP address. A static IP keeps the server address consistent, unlike dynamic IPs that change after lease renewal. This setup establishes reliable network communication for the domain controller. It supports Active Directory, DNS, and DHCP services and ensures stable connectivity across the network.
   
+<p align="center">
+Renaming the Server
+ <p align="center">
+ <img width="550" height="550" alt="Image" src="https://github.com/user-attachments/assets/64b0fe4f-d9cc-4e6d-9910-b6e19a07274e" /><br>
+ 
+**` Steps `**
+  - Open Server Manager.
+  - Click Local Server on the left panel.
+  - Locate the Computer Name field.
+  - Click the current computer name and enter the System Properties window, click Change.
+  - Enter the new Computer Name and click OK to apply changes.
+  - Restart the server when prompted.
+    
+<p align="center">
+Configuring Network Adapters for the Server
+<p align="center">
+ <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/9a9e9c27-ea0a-4a1b-8402-d452e8960920" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/e559f4ec-497c-4b7f-900a-dac157b7a590" /> 
+
+**` Configuring Network Adapter `**
+  - The Host-Only Adapter is the isolated internal lab network where the Domain Controller and Windows 11 Clients will communicate with each other.
+  - NAT gives the server internal access, but it's kept isolated from the home network.
+
+<p align="center">
+Identifying IP Range for the Host-Only Network
+<p align="center">
+ <img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/6d28d6aa-75d2-4964-a4ba-4c5a54962c69" /><br>
+ 
+**` Determining IP Address Range for Static Configuration `**
+  - The domain controller must keep a static IP address because all network devices depend on it for communication. Computers, users, and printers connect to it for authentication and resource access.
+  - It acts as the central control point for the home lab network.
+  - VirtualBox Host-Only Network uses a defined IP range. The first step is identifying the subnet range assigned to the host-only adapter. This range determines valid IP addresses for the virtual machines and the host system within the isolated network.
+
+<p align="center">
+Configuring DC with a Static IPv4 Address
+<p align="center">
+ <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/285b3c8a-160d-48ae-a5f5-cec6a8d68302" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="475" height="475" alt="Image" src="https://github.com/user-attachments/assets/090cb017-73dc-4815-9cb6-b528da504f6c" />
+
+ **` Assigning Static Configuration `**
+  - Open IPv4 settings.
+  - Select manual configuration.
+  - Enter static IP address, subnet mask, default gateway, and DNS server.
+  - Save settings and verify connectivity using ping.
+
+<p align="center">
+ Installing AD DS & Promoting Server to DC
+ <p align="center">
+ <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/eab11d16-5ca2-4f2a-a3fe-3fd09b21c8b3" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/07c707b8-6917-42aa-9326-827b5c0877ec" />
+
+ **` Installing Active Directory `**
+   - I installed Active Directory Domain Services and promoted the server to a domain controller, which converts the system from a standalone server into the core identity system of the network.
+   - I added the AD DS role through Server Manager, then ran the promotion wizard.
+   - During promotion, I created a new forest and domain, set the Directory Services Restore Mode password, and allowed the server to install and configure DNS.
+   - After the restart, the server began handling authentication, domain logins, and directory services.
+   - It now stores user accounts, computers, and security policies, and it controls access to resources across the environment.
+   - This step establishes the foundation for centralized identity and access management in my lab.
+
+<p align="center">
+Confirmation of Creation of the DC
+<p align="center">
+<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/a77db9d3-e4df-471a-a3fe-0504288d91b9" /> &nbsp;&nbsp;&nbsp;<img width="500" height="650" alt="Image" src="https://github.com/user-attachments/assets/683029ae-ab6c-40f9-9367-5ece9824c468" />
+ 
+**` Tasks Completed `**
+- Server renamed to DC02 to match the domain controller role and rebooted successfully.
+- VirtualBox networking configured with Host-Only and NAT adapters to isolate lab traffic and allow controlled external access.
+- Host-Only IP range identified for static addressing.
+- Domain controller assigned a static IP address **192.168.56.10**, subnet mask **255.255.255.0**, and DNS **192.168.56.10** with manual IPv4 configuration.  
+- Set DNS to point to the Domain Controller.
+- No default gateway was configured because the lab uses an isolated internal network. All communication occurs within the local environment between the Domain Controller and the client system.
+- Network settings applied and verified for connectivity.
+- Installed Active Directory and promoted the server to a DC.
+
 <p align="center">
 Active Directory Installation and Domain Setup:  <br/>
  
