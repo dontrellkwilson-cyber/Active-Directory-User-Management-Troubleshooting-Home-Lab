@@ -100,8 +100,7 @@ Confirmation of Creation of the DC:
 - Server renamed to DC02 to match the domain controller role and rebooted successfully.
 - VirtualBox networking configured with Host-Only and NAT adapters to isolate lab traffic and allow controlled external access.
 - Host-Only IP range identified for static addressing.
-- Domain controller assigned a static IP address **192.168.56.10**, subnet mask **255.255.255.0**, and DNS **192.168.56.10** with manual IPv4 configuration.  
-- Set DNS to point to the Domain Controller.
+- Domain controller assigned a static IP address **192.168.56.10**, subnet mask **255.255.255.0**, and DNS **192.168.56.10** with manual IPv4 configuration.
 - No default gateway was configured because the lab uses an isolated internal network. All communication occurs within the local environment between the Domain Controller and the client system.
 - Network settings applied and verified for connectivity.
 - Installed Active Directory and promoted the server to a DC.<br><br>
@@ -138,7 +137,7 @@ Active Directory Infrastructure Setup:  <br/>
 <p align="center">
 Joining a Windows Client to an Active Directory Domain:  <br/>
 <p align="center">
- <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/285b3c8a-160d-48ae-a5f5-cec6a8d68302" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="475" height="475" alt="Image" src="https://github.com/user-attachments/assets/090cb017-73dc-4815-9cb6-b528da504f6c" /><br><br>
+ <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/3a3307e2-8412-49f6-8ad9-ab680308cef5" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/9cb42af5-5a08-415a-8f18-e8f4c54fc304" /> />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/deb2cf54-a301-4f5a-9184-ea6df373cc8a" /><br><br>
 
 **` Domain Integration of a Windows Client with Active Directory `**
    - Adding a client machine to the domain connects it to Active Directory so it can authenticate users through the domain controller.
@@ -146,20 +145,28 @@ Joining a Windows Client to an Active Directory Domain:  <br/>
    - It ensures users sign in with domain accounts instead of local accounts, which improves security and simplifies management for administrators.<br><br>
    
 **` Steps `**
-   - Set client DNS to the domain controller IP address.
+   - Set the client DNS to the domain controller IP address.
    - Open system settings on the Windows 10 client.
    - Go to About or System Properties.
    - Select Rename this PC (advanced).
    - Choose the Domain option.
    - Enter the domain name. Provide domain admin credentials.
    - Restart the client machine.
-   - After reboot, sign in using a domain user account.
+   - After reboot, sign in using a domain user account.,br><br>
 
-     
+<p align="center">
+Enabling Domain User Login on Client Machines
+<p align="center">
+<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/d1cc46eb-d728-4301-8b85-d142596e5d3a" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/245491b6-0802-43c6-82be-1d7a41d801c9" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/dbcbd970-22d5-40c2-9749-c7a8dc3cccb9" />
+
 **` Tasks Completed `**
-- Created two OUs, one named Accounts and one named Groups.
-- 
-
+- Created Organizational Units to structure Active Directory by department and role
+- Provisioned user accounts and security groups within appropriate OUs.
+- Followed best practices by avoiding default containers and using dedicated OUs.
+- Joined Windows 10 client machine to the domain using domain credentials.
+- Configured DNS to point to the domain controller for proper communication.
+- Verified domain integration by logging in with a domain user account.
+- Confirmed authentication and access control through the domain controller.
 
   
 <p align="center">
