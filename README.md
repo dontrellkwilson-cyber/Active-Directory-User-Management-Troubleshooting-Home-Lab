@@ -135,9 +135,9 @@ Active Directory Infrastructure Setup:  <br/>
 - Separating users into OUs improves control, simplifies administration, and supports scalable Group Policy management across the domain.<br><br>
 
 <p align="center">
-Joining a Windows Client to an Active Directory Domain:  <br/>
+Joining a Windows Client to an Active Directory Domain:<br/>
 <p align="center">
- <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/3a3307e2-8412-49f6-8ad9-ab680308cef5" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/9cb42af5-5a08-415a-8f18-e8f4c54fc304" /> />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/deb2cf54-a301-4f5a-9184-ea6df373cc8a" /><br><br>
+ <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/3a3307e2-8412-49f6-8ad9-ab680308cef5" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/9cb42af5-5a08-415a-8f18-e8f4c54fc304" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/deb2cf54-a301-4f5a-9184-ea6df373cc8a" /><br><br>
 
 **` Domain Integration of a Windows Client with Active Directory `**
    - Adding a client machine to the domain connects it to Active Directory so it can authenticate users through the domain controller.
@@ -152,7 +152,7 @@ Joining a Windows Client to an Active Directory Domain:  <br/>
    - Choose the Domain option.
    - Enter the domain name. Provide domain admin credentials.
    - Restart the client machine.
-   - After reboot, sign in using a domain user account.,br><br>
+   - After reboot, sign in using a domain user account.<br><br>
 
 <p align="center">
 Enabling Domain User Login on Client Machines
