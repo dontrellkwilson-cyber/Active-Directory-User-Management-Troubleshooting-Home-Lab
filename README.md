@@ -97,7 +97,7 @@ Confirmation of Creation of the DC:
 <img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/a77db9d3-e4df-471a-a3fe-0504288d91b9" /> &nbsp;&nbsp;&nbsp;<img width="500" height="650" alt="Image" src="https://github.com/user-attachments/assets/683029ae-ab6c-40f9-9367-5ece9824c468" /><br><br>
  
 **` Tasks Completed `**
-- Server renamed to DC02 to match the domain controller role and rebooted successfully.
+- Server renamed to **DC02** to match the domain controller role and rebooted successfully.
 - VirtualBox networking configured with Host-Only and NAT adapters to isolate lab traffic and allow controlled external access.
 - Host-Only IP range identified for static addressing.
 - Domain controller assigned a static IP address **192.168.56.10**, subnet mask **255.255.255.0**, and DNS **192.168.56.10** with manual IPv4 configuration.
@@ -160,11 +160,11 @@ Enabling Domain User Login on Client Machines
 <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/d1cc46eb-d728-4301-8b85-d142596e5d3a" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/245491b6-0802-43c6-82be-1d7a41d801c9" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/dbcbd970-22d5-40c2-9749-c7a8dc3cccb9" />
 
 **` Tasks Completed `**
-- Created Organizational Units to structure Active Directory by department and role
-- Provisioned user accounts and security groups within appropriate OUs.
+- Created Organizational Units to structure Active Directory by department and role.
+- Provisioned user accounts **(Patricia Johnson & Jim Watkins)** and security groups **(HR & Finance)** within appropriate OUs.
 - Followed best practices by avoiding default containers and using dedicated OUs.
-- Joined Windows 10 client machine to the domain using domain credentials.
-- Configured DNS to point to the domain controller for proper communication.
+- Joined Windows 10 client machine **(CLIENT02)** to the domain **(LAB.local)** using domain credentials.
+- Configured CLIENT02 DNS **(192.168.56.10)** to point to the domain controller **(LAB.local)** for proper communication.
 - Verified domain integration by logging in with a domain user account.
 - Confirmed authentication and access control through the domain controller.
 
