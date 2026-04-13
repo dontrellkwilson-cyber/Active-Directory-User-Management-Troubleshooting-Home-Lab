@@ -20,7 +20,7 @@ This lab covers core Microsoft Active Directory tasks. You create and manage use
 
 <h2>Lab Walk-Through:</h2>
 
-**`Phase 1: Environment Setup`**
+**`Phase I: Environment Setup`**
 <p align="center">
 Server Setup & Domain Controller Configuration: <br />
 
@@ -30,13 +30,13 @@ Server Setup & Domain Controller Configuration: <br />
   -  A domain controller hosts Active Directory and handles authentication and security policies across the network.
   -  Active Directory manages authentication, passwords, logins, users, groups, and computers, and controls access through permissions and group policies.
   -  Group Policy Objects enforce security settings and system configurations.
-  -  Active Directory also supports least privilege access to protect network resources.
+  -  Active Directory also supports least privilege access to protect network resources.<br><br>
 
 **` Overview `** 
--  This step prepares the server for domain controller deployment. The process includes renaming the server, configuring network adapters, and assigning a static IP address. A static IP keeps the server address consistent, unlike dynamic IPs that change after lease renewal. This setup establishes reliable network communication for the domain controller. It supports Active Directory, DNS, and DHCP services and ensures stable connectivity across the network.
+-  This step prepares the server for domain controller deployment. The process includes renaming the server, configuring network adapters, and assigning a static IP address. A static IP keeps the server address consistent, unlike dynamic IPs that change after lease renewal. This setup establishes reliable network communication for the domain controller. It supports Active Directory, DNS, and DHCP services and ensures stable connectivity across the network.<br><br>
   
 <p align="center">
-Renaming the Server
+Renaming the Server:
  <p align="center">
  <img width="550" height="550" alt="Image" src="https://github.com/user-attachments/assets/64b0fe4f-d9cc-4e6d-9910-b6e19a07274e" /><br>
  
@@ -46,42 +46,42 @@ Renaming the Server
   - Locate the Computer Name field.
   - Click the current computer name and enter the System Properties window, click Change.
   - Enter the new Computer Name and click OK to apply changes.
-  - Restart the server when prompted.
+  - Restart the server when prompted.<br><br>
     
 <p align="center">
-Configuring Network Adapters for the Server
+Configuring Network Adapters for the Server:
 <p align="center">
- <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/9a9e9c27-ea0a-4a1b-8402-d452e8960920" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/e559f4ec-497c-4b7f-900a-dac157b7a590" /> 
+ <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/9a9e9c27-ea0a-4a1b-8402-d452e8960920" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/e559f4ec-497c-4b7f-900a-dac157b7a590" /> <br><br>
 
 **` Configuring Network Adapter `**
   - The Host-Only Adapter is the isolated internal lab network where the Domain Controller and Windows 11 Clients will communicate with each other.
-  - NAT gives the server internal access, but it's kept isolated from the home network.
+  - NAT gives the server internal access, but it's kept isolated from the home network.<br><br>
 
 <p align="center">
-Identifying IP Range for the Host-Only Network
+Identifying IP Range for the Host-Only Network:
 <p align="center">
  <img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/6d28d6aa-75d2-4964-a4ba-4c5a54962c69" /><br>
  
 **` Determining IP Address Range for Static Configuration `**
   - The domain controller must keep a static IP address because all network devices depend on it for communication. Computers, users, and printers connect to it for authentication and resource access.
   - It acts as the central control point for the home lab network.
-  - VirtualBox Host-Only Network uses a defined IP range. The first step is identifying the subnet range assigned to the host-only adapter. This range determines valid IP addresses for the virtual machines and the host system within the isolated network.
+  - VirtualBox Host-Only Network uses a defined IP range. The first step is identifying the subnet range assigned to the host-only adapter. This range determines valid IP addresses for the virtual machines and the host system within the isolated network.<br><br>
 
 <p align="center">
-Configuring DC with a Static IPv4 Address
+Configuring DC with a Static IPv4 Address:
 <p align="center">
- <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/285b3c8a-160d-48ae-a5f5-cec6a8d68302" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="475" height="475" alt="Image" src="https://github.com/user-attachments/assets/090cb017-73dc-4815-9cb6-b528da504f6c" />
+ <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/285b3c8a-160d-48ae-a5f5-cec6a8d68302" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="475" height="475" alt="Image" src="https://github.com/user-attachments/assets/090cb017-73dc-4815-9cb6-b528da504f6c" /><br><br>
 
  **` Assigning Static Configuration `**
   - Open IPv4 settings.
   - Select manual configuration.
   - Enter static IP address, subnet mask, default gateway, and DNS server.
-  - Save settings and verify connectivity using ping.
+  - Save settings and verify connectivity using ping.<br><br>
 
 <p align="center">
- Installing AD DS & Promoting Server to DC
+ Installing AD DS & Promoting Server to DC:
  <p align="center">
- <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/eab11d16-5ca2-4f2a-a3fe-3fd09b21c8b3" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/07c707b8-6917-42aa-9326-827b5c0877ec" />
+ <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/eab11d16-5ca2-4f2a-a3fe-3fd09b21c8b3" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/07c707b8-6917-42aa-9326-827b5c0877ec" /><br><br>
 
  **` Installing Active Directory `**
    - I installed Active Directory Domain Services and promoted the server to a domain controller, which converts the system from a standalone server into the core identity system of the network.
@@ -89,12 +89,12 @@ Configuring DC with a Static IPv4 Address
    - During promotion, I created a new forest and domain, set the Directory Services Restore Mode password, and allowed the server to install and configure DNS.
    - After the restart, the server began handling authentication, domain logins, and directory services.
    - It now stores user accounts, computers, and security policies, and it controls access to resources across the environment.
-   - This step establishes the foundation for centralized identity and access management in my lab.
+   - This step establishes the foundation for centralized identity and access management in my lab.<br><br>
 
 <p align="center">
-Confirmation of Creation of the DC
+Confirmation of Creation of the DC:
 <p align="center">
-<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/a77db9d3-e4df-471a-a3fe-0504288d91b9" /> &nbsp;&nbsp;&nbsp;<img width="500" height="650" alt="Image" src="https://github.com/user-attachments/assets/683029ae-ab6c-40f9-9367-5ece9824c468" />
+<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/a77db9d3-e4df-471a-a3fe-0504288d91b9" /> &nbsp;&nbsp;&nbsp;<img width="500" height="650" alt="Image" src="https://github.com/user-attachments/assets/683029ae-ab6c-40f9-9367-5ece9824c468" /><br><br>
  
 **` Tasks Completed `**
 - Server renamed to DC02 to match the domain controller role and rebooted successfully.
@@ -104,30 +104,65 @@ Confirmation of Creation of the DC
 - Set DNS to point to the Domain Controller.
 - No default gateway was configured because the lab uses an isolated internal network. All communication occurs within the local environment between the Domain Controller and the client system.
 - Network settings applied and verified for connectivity.
-- Installed Active Directory and promoted the server to a DC.
+- Installed Active Directory and promoted the server to a DC.<br><br>
 
-**`Phase 2: Environment Setup`**
+
+**`Phase II: Organizational Unit (OU) Design & User Provisioning`**
 <p align="center">
-Active Directory Installation and Domain Setup:  <br/>
+Active Directory Infrastructure Setup:  <br/>
  
-<p align="left">
-  <img src="https://github.com/user-attachments/assets/c9c572fd-f1a9-4c6b-8115-f0cc490e332f" width="400"/>
-  &nbsp;&nbsp;&nbsp;&nbsp; <img src="https://github.com/user-attachments/assets/9a33d328-8601-42cd-94dd-91bf3d161bc0" width="400"/> 
- <br><br>
-  <img src="https://github.com/user-attachments/assets/7b33cc25-9f0b-4ff7-ad99-bc2cfaf7321b" width="400"/>
-</p>
-
-  **` Tasks Completed `**
-- Installed Active Directory Domain Services (AD DS) role.  
-- Promoted Windows Server to Domain Controller.  
-- Created a new domain (mydomain.com).  
-- Configured DNS during domain setup.  
-- Verified successful domain deployment.  
+ **` Organizational Unit (OU) Design & User Provisioning Key Concepts `** 
+  -  OUs organize Active Directory objects like users and computers into structured groups for easier management.
+  -  OU design follows business structure, such as departments, roles, or locations.
+  -  User provisioning includes creating and configuring user accounts with the correct attributes and settings.
+  -  Security groups are used to assign permissions and control access to resources.
+  -  OU structure supports delegation of administration and simplifies policy application through Group Policy Objects.<br><br>
 
 **` Overview `** 
--  This step establishes centralized identity and access management by configuring the server as a Domain Controller. Active Directory allows administrators to manage users, systems, and resources within a domain, which is a core function in enterprise IT environments.
+-  This phase focuses on building and managing the Active Directory structure. Organizational Units are created to organize users and computers for structured administration. New user accounts are added and placed into appropriate security groups, including administrator accounts for elevated privileges. A Windows 10 system is then joined to the domain to integrate it with Active Directory. After the join process, a newly created domain user account is used to log in and verify authentication and access control functionality.<br><br>
   
- <p align="center">
+<p align="center">
+ Creating OUs: 
+<p align="center">
+  <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/44a17e7f-d772-4b59-bee7-0db5bd3420f4" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/885f9994-7b3a-4247-a0d6-8169263b087e" /><br><br>
+  <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/4d1b5e38-a3e9-4599-8450-66f123605b18" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/c7b5f4ba-83ba-47c2-90d8-01dee3115750" />
+
+**` OU & User Account Structure in Active Directory `**
+- Organizational Units in Active Directory are not meant for built-in groups or default users.
+- Built-in groups exist for system functions, and adding standard users to them creates security and management issues.
+- New OUs are created to keep Active Directory clean and organized. They allow structured management of users and computers and support future Group Policy applications.
+- To create an OU, open the domain, right-click the domain name, such as LAB.local, select New, then select Organizational Unit, enter a name, and select OK.
+- Inside Organizational Units, accounts are created and organized based on function or department. OUs can contain user accounts like Jim and Patricia, as well as groups such as HR or Finance.
+- Separating users into OUs improves control, simplifies administration, and supports scalable Group Policy management across the domain.<br><br>
+
+<p align="center">
+Joining a Windows Client to an Active Directory Domain:  <br/>
+<p align="center">
+ <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/285b3c8a-160d-48ae-a5f5-cec6a8d68302" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="475" height="475" alt="Image" src="https://github.com/user-attachments/assets/090cb017-73dc-4815-9cb6-b528da504f6c" /><br><br>
+
+**` Domain Integration of a Windows Client with Active Directory `**
+   - Adding a client machine to the domain connects it to Active Directory so it can authenticate users through the domain controller.
+   - This allows centralized login, consistent security policies, and controlled access to network resources.
+   - It ensures users sign in with domain accounts instead of local accounts, which improves security and simplifies management for administrators.<br><br>
+   
+**` Steps `**
+   - Set client DNS to the domain controller IP address.
+   - Open system settings on the Windows 10 client.
+   - Go to About or System Properties.
+   - Select Rename this PC (advanced).
+   - Choose the Domain option.
+   - Enter the domain name. Provide domain admin credentials.
+   - Restart the client machine.
+   - After reboot, sign in using a domain user account.
+
+     
+**` Tasks Completed `**
+- Created two OUs, one named Accounts and one named Groups.
+- 
+
+
+  
+<p align="center">
 RAS/NAT: <br/>
 
 <p align="left">
