@@ -168,7 +168,8 @@ Enabling Domain User Login on Client Machines
 - Verified domain integration by logging in with a domain user account.
 - Confirmed authentication and access control through the domain controller.<br><br>
 
-**`Phase III: Group Policy Management`**
+**`Phase III: Group Policy Management`**<br><br>
+
 <p align="center">
 Creating and Managing Group Policy Objects (GPOs):<br/>
  
@@ -183,7 +184,8 @@ Creating and Managing Group Policy Objects (GPOs):<br/>
 
 **` Overview `** 
 -  This phase focuses on managing security and configuration across the Active Directory domain using Group Policy. Group Policy Objects are created and linked to Organizational Units to apply centralized settings to users and computers. Security policies such as password requirements, account lockout rules, and system restrictions are configured to enforce consistent security standards. Policies are tested by updating client machines and verifying that settings apply to domain users and systems, ensuring centralized control and enforcement across the network.<br><br>
-  
+
+**` Step 1 `**:
 <p align="center">
  Open Group Policy Management Console (GPMC): 
 <p align="center">
@@ -195,6 +197,7 @@ Creating and Managing Group Policy Objects (GPOs):<br/>
    - Click Tools at the top right.
    - Select Group Policy Management.<br><br>
 
+**` Step 2 `**:
  <p align="center">
  Navagating to Domain: 
 <p align="center">
@@ -208,113 +211,90 @@ Creating and Managing Group Policy Objects (GPOs):<br/>
 
 **` Decide where you want the policy `**:
   - Domain Level (**applies to all**).
-  - OR specific OU (**Organizational Unit**).
-    
+  - OR specific OU (**Organizational Unit**).<br><br>
+
+**` Step 3 `**:
 <p align="center">
-PowerShell User Automation:  <br/>
-
- <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/add3c286-d617-41ba-9462-35ef3c38b454" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/8e6a987d-ca5e-4e6e-9ef0-486cafb018c9" />
- <br><br>
- <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/dd3d2fc9-e654-4b75-b909-646ba155321d" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/501c0561-3070-45b9-ab0d-f909c1f3e416" />
-
- - This script creates 1,000 user accounts to simulate a large enterprise environment.
+Creating a New GPO: 
+<p align="center">
+<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/ceb9d0af-eb68-4ea7-ad19-4aaec78e56d9" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/9e9484a2-1e6a-4ae9-8864-afce8cef43c3" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/8ff5cf62-1c2e-4f1f-b122-0b6b0e2da0be" /><br><br>
+ <b>There are two ways to create a new GPO.</b> 
  
-**` Script Used `**
-```powershell
-$PASSWORD_FOR_USERS   = "Password1"
-$NUMBER_OF_ACCOUNTS_TO_CREATE = 10000
-
-Function generate-random-name() {
-    $consonants = @('b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','z')
-    $vowels = @('a','e','i','o','u','y')
-    $nameLength = Get-Random -Minimum 3 -Maximum 7
-    $count = 0
-    $name = ""
-
-    while ($count -lt $nameLength) {
-        if ($count % 2 -eq 0) {
-            $name += $consonants[(Get-Random -Minimum 0 -Maximum ($consonants.Count - 1))]
-        } else {
-            $name += $vowels[(Get-Random -Minimum 0 -Maximum ($vowels.Count - 1))]
-        }
-        $count++
-    }
-    return $name
-}
-
-$count = 1
-while ($count -lt $NUMBER_OF_ACCOUNTS_TO_CREATE) {
-    $firstName = generate-random-name
-    $lastName = generate-random-name
-    $username = "$firstName.$lastName"
-    $password = ConvertTo-SecureString $PASSWORD_FOR_USERS -AsPlainText -Force
-
-    Write-Host "Creating user: $username"
-
-    New-ADUser -AccountPassword $password `
-               -GivenName $firstName `
-               -Surname $lastName `
-               -DisplayName $username `
-               -Name $username `
-               -EmployeeID $username `
-               -PasswordNeverExpires $true `
-               -Path "OU=_EMPLOYEES,$(([ADSI]``"").distinguishedName)" `
-               -Enabled $true
-
-    $count++
-}
-```
- **` Script Overview `** 
- - This script automates bulk user creation in Active Directory by generating random first and last names and creating unique usernames. It significantly reduces manual effort and demonstrates how scripting is used in enterprise environments to manage large numbers of user accounts efficiently.
+- <b>The first option creates the GPO first and links it to a domain or OU later.</b>
+- <b>The second option creates and links the GPO at the same time.</b>
    
- **` Tasks Completed `**
-- Opened PowerShell with administrative privileges. 
-- Imported Active Directory module. 
-- Executed script to create multiple user accounts. 
-- Verified users were successfully created in Active Directory. 
-  
-**` Overview `** 
--  This step uses PowerShell to automate user account creation in Active Directory. Automation reduces manual effort, improves consistency, and is commonly used in enterprise environments to manage large numbers of users efficiently.
+**` Method I `**:
+   - Click Group Policy Objects.
+   - Right click New.
+   - Enter a name.
+   - Click OK.
 
+**` Method II `**:
+  - Right click the OU or Domain.
+  - Click Create a GPO in this domain, and Link it here.
+  - Enter a name.
+  - Click OK.<br><br>
+ 
+ **` Step 4 `**:
 <p align="center">
-Client Machine Setup:  <br/>
- 
-<img width="400" height="500" alt="Image" src="https://github.com/user-attachments/assets/96368fa8-aed4-4996-88e4-9a3e5ff2850e" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="350" alt="Image" src="https://github.com/user-attachments/assets/d4a5bb7b-9200-4efd-82d3-998e43bb550b" />
-<br /><br>
-<img width="400" height="500" alt="Image" src="https://github.com/user-attachments/assets/1c9b475b-7d7e-4de2-ad2e-f9bee2aa8afa" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="409" alt="Image" src="https://github.com/user-attachments/assets/c63d1d7b-29b8-4a66-9d5a-0ef34f73af43" />
-<br><br>
-<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/23663373-6f67-4d76-9064-bc9db9319b91" />
- 
-**` Tasks Completed `**
-- Created Windows 10 virtual machine (Client 1) in VirtualBox.  
-- Allocated system resources (RAM, storage, network adapter).  
-- Installed Windows 10 operating system.  
-- Connected the client machine to the internal network.  
-- Verified network connectivity with the Domain Controller.   
-
-**` Overview `**  
-- This step sets up a client system within the lab environment to simulate a real user workstation. The client machine is used to test domain connectivity, user authentication, and network services provided by the Domain Controller.
-
+Edit & Configure the GPO: 
 <p align="center">
-Domain User Login Validation:  <br/>
+<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/15355fc4-0930-41b1-8cc7-3152a458d673" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/738faf81-80ed-4d85-b26d-b24597460978" /<br><br>
+<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/88d276ec-9219-4906-aec4-771f3403123d" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/6e2782ac-53cb-4e8b-9e04-8d5fe488bff9" /><br><br>
+<img width="400" height="900" alt="Image" src="https://github.com/user-attachments/assets/52145cf0-28ae-4550-bced-192c7830d085" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/77632a7c-1497-4063-a914-108c515f3c78" /><br><br>
+<img width="400" height="900" alt="Image" src="https://github.com/user-attachments/assets/1cfc50df-c360-4d85-b4c4-f8a5dba8a9c2" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/ec425090-5043-44cd-a70a-f5a1eba96502" /><br><br>
+<img width="400" height="900" alt="Image" src="https://github.com/user-attachments/assets/eae31dbe-119c-440c-a9a0-851d4c8c8510" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/fb55fa37-10fb-43a1-b983-bf70ba114d36" /><br><br>
+<img width="600" height="400" alt="Image" src="https://github.com/user-attachments/assets/7ab2eabf-dff9-43c1-adc9-2b019d134ca1" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/9fb44df3-3399-46ad-beff-6e06676c2f93" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/26f35b09-ade2-4019-bece-09da589ba157" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/c4db19b2-43c2-45bb-84c4-1632f4240018" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/e9a7d021-87d7-4960-99e5-bcae67c7df27" /><br><br>
+<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/ec985f7c-7a94-4d6b-ae27-7566da294235" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/af9c6661-e493-498a-8a4d-5514dbfa9cd0" /><br><br>
+ <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/e3ef3bc4-4799-4779-a395-574b3a64f78f" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/b4e9aeb8-ef06-429a-be21-2512980ec910" /><br><br>
+ <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/69ad2293-2547-4dac-948a-aad90204f7b1" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/b7ad1d61-2be8-4b47-ae05-e075b7fa18c9" /><br><br>
  
-<img width="1016" height="868" alt="Image" src="https://github.com/user-attachments/assets/29ab288a-5811-425d-b62c-574269f28310" />
-</p>
+**` Steps `**
+   - Right-click the GPO.
+   - Click Edit.
+   - **`Configure settings under:`**
+       - Computer Configuration (**applies on startup**).
+       - User Configuration (**applies on login**).
+   - **`Navigate inside:`**
+       - Policies → Administrative Templates.
+   - Double-click any setting.
+   - **`Choose:`**
+       - Enabled.
+       - Disabled.
+   - Click Apply → OK.
 
-**` Tasks Completed `**
-- Logged into Client 1 using Active Directory user accounts. 
-- Verified successful domain authentication. 
-- Confirmed user accounts created via PowerShell are functional. 
-- Tested access to the domain environment from the client system.   
+**` Policies enforce rules; users cannot override them `**.
+   
+**` This GPO applies specific controls to manage user behavior and system security `**.
 
-**` Overview `**  
-- This step validates the full Active Directory setup by confirming that users created on the Domain Controller can authenticate and log into a client machine. It demonstrates successful integration of user management, domain services, and client connectivity within the network.
-<!--
- ```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
-```
---!>
+User Configs:
+1. **Prohibit access to Control Panel and Settings** restricts users from changing system configurations.
+2. **Prevent installation from removable media** blocks users from installing unauthorized software from USB devices.
+3. **Removable disks deny write access** stops users from copying or transferring data to external drives.
+4. **Screen saver enforcement** ensures systems lock after inactivity.
+5. **Password-protected screen saver** requires authentication to regain access.
+6. **Screen saver timeout of 550 seconds** locks the system after a set idle period.
+7. **Force specific screen saver** standardizes the screen lock behavior across all users.
+
+Computer Configs: 
+1. **Disable Microsoft Defender Antivirus** turns off built-in antivirus protection for lab control or testing scenarios.
+2. **Disable guest accounts** prevents unauthorized or anonymous access to systems.
+3. **Restricted Groups** define who has local administrator rights, ensuring only approved users have elevated access while standard users, such as HR, do not.
+     
+**` Overview `**
+- This Group Policy Object enforces user and system security settings across the domain.
+- **User Configuration** restricts access to Control Panel and system settings, blocks installation from removable media, and denies write access to removable disks. It also enforces screen saver policies, including password protection, a timeout of 550 seconds, and a specific screen saver.
+- **Computer Configuration** disables Microsoft Defender Antivirus and guest accounts to control system access. Restricted Groups are configured to define local administrator membership, ensuring only authorized users have admin rights while standard users, such as HR, are not granted elevated privileges.<br><br>
+
+ **` Step 5 `**:
+<p align="center">
+Link the GPO (if not already linked):
+
+
+ 
+**` Steps `**
+- Right-click OU / Domain.
+- Click Link an Existing GPO.
+- Select your GPO.
+- Click OK.
+ 
