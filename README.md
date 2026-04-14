@@ -298,8 +298,13 @@ Computer Configs:
  **` Step 5 `**:
 <p align="center">
 Link the GPO (if not already linked):
+<p align="center">
+<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/91c0e541-9a5d-46d2-981c-f39cdc3f8a99" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/b0656635-e263-4feb-bbf6-5c94e4178bc1" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/8650ec29-3938-4476-897d-8e57cacbc1c8" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/43f4af4e-5cb2-4b22-926e-a8c3a7d7da18" /><br><br>
 
-
+**` Overview `**
+  - Linking the **HR Lab GPO** to the **`Accounts OU`** applies all configured policies to users and computers within that OU.
+  - All accounts in this OU automatically receive restrictions such as limited system access, removable media controls, and enforced screen lock settings.
+  - Any new user added to the OU inherits these policies, ensuring consistent and centralized management.
  
 **` Steps `**
 - Right-click OU / Domain.
