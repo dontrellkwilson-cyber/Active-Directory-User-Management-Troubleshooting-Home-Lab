@@ -166,44 +166,50 @@ Enabling Domain User Login on Client Machines
 - Joined Windows 10 client machine **(CLIENT02)** to the domain **(LAB.local)** using domain credentials.
 - Configured CLIENT02 DNS **(192.168.56.10)** to point to the domain controller **(LAB.local)** for proper communication.
 - Verified domain integration by logging in with a domain user account.
-- Confirmed authentication and access control through the domain controller.
+- Confirmed authentication and access control through the domain controller.<br><br>
 
-  
+**`Phase III: Group Policy Management`**
 <p align="center">
-RAS/NAT: <br/>
-
-<p align="left">
- <img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/0af40b6b-c50a-42f3-846c-0f799495c9b5" /> 
- &nbsp;&nbsp;&nbsp;&nbsp; <img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/566f74c0-8ec3-43bb-9d1f-0c1cd6f3f2b4" />
- <br><br>
- <img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/b6adedc0-1835-4dcf-8f3c-1cace81b3fc6" />
- &nbsp;&nbsp;&nbsp;&nbsp; <img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/2ba4ead2-73c0-4436-9fd3-d97d8aa496d7" />
-</p>
-
-**` Tasks Completed `**
-- Installed the Remote Access role on Windows Server.  
-- Enabled Routing and Remote Access Service (RRAS).  
-- Configured NAT to allow internal network access to the Internet.  
-- Selected the external network interface for Internet access.  
-- Verified client connectivity to external networks.  
-
-**` Overview `** 
--  This step allows devices on the internal network to access external networks through Network Address Translation. NAT enables multiple systems to share a single external connection, which is commonly used in enterprise environments to manage and secure outbound traffic.
-
-<p align="center">
-Internet Access Configuration:  <br/>
-
- <img width="409" height="445" alt="Image" src="https://github.com/user-attachments/assets/4bb79ddc-54cb-4b1c-928e-cb3c04e51eb4" />&nbsp;&nbsp;&nbsp;&nbsp;
-<img width="409" height="445" alt="Image" src="https://github.com/user-attachments/assets/c1459a11-34f1-42a4-af84-e9d09cea9848" />
+Creating and Managing Group Policy Objects (GPOs):<br/>
  
- **` Tasks Completed `**
-- Opened Server Manager and accessed Local Server settings.  
-- Disabled Internet Explorer Enhanced Security Configuration (IE ESC).  
-- Verified internet access from the Domain Controller using a web browser.  
+**` GPOs Key Concepts `** 
+  -  Group Policy provides centralized control over users and computers in an Active Directory domain.
+  -  Group Policy Objects apply settings to users or computers based on OU structure.
+  -  Policies control security settings, password rules, and account lockout behavior.
+  -  User and computer restrictions enforce system limits such as blocking Control Panel or Command Prompt.
+  -  GPOs apply through domain and OU linking for targeted management.
+  -  Policy updates occur through refresh cycles or manual update using gpupdate /force.
+  -  Group Policy reduces manual configuration and ensures consistent system settings across all machines.<br><br>
 
 **` Overview `** 
--  This step enables internet access from the Domain Controller for testing. In a production environment, Domain Controllers are typically restricted from direct internet browsing to reduce security risks, but this is enabled in the lab to validate connectivity and functionality.
+-  This phase focuses on managing security and configuration across the Active Directory domain using Group Policy. Group Policy Objects are created and linked to Organizational Units to apply centralized settings to users and computers. Security policies such as password requirements, account lockout rules, and system restrictions are configured to enforce consistent security standards. Policies are tested by updating client machines and verifying that settings apply to domain users and systems, ensuring centralized control and enforcement across the network.<br><br>
   
+<p align="center">
+ Open Group Policy Management Console (GPMC): 
+<p align="center">
+<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/d5f6afef-92ab-4267-b066-69e5b7936d80" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/91a3e434-729b-4d52-9f6f-51cf396abcee" /><br><br>
+<b>This opens the main console where all GPOs are managed.</b>
+   
+**` Steps `**
+   - Open Server Manager.
+   - Click Tools at the top right.
+   - Select Group Policy Management.<br><br>
+
+ <p align="center">
+ Navagating to Domain: 
+<p align="center">
+<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/4add2bf9-1b1b-41eb-a45f-7ab3398cf66c" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/680fb357-3011-4fcd-b8bc-e5e20e56092a" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/5f8aa4ee-5ffc-47ae-be02-87aabb72dc73" /><br><br>
+<b>GPOs are always linked to Site, Domain, or OU.</b>
+   
+**` Expand `**:
+   - Forest.
+   - Domains.
+   - Click your Domain Name.
+
+**` Decide where you want the policy `**:
+  - Domain Level (**applies to all**).
+  - OR specific OU (**Organizational Unit**).
+    
 <p align="center">
 PowerShell User Automation:  <br/>
 
