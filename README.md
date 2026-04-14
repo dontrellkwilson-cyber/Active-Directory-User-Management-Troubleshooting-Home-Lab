@@ -310,5 +310,54 @@ Link the GPO (if not already linked):
 - Right-click OU / Domain.
 - Click Link an Existing GPO.
 - Select your GPO.
-- Click OK.
+- Click OK.<br><br>
+
+**` Step 6 `**:
+<p align="center">
+Apply / Update the Policy:
+<p align="center">
+<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/5a6cbdea-7a54-45cf-b8c6-fa860fd5b2e7" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="Image" src="https://github.com/user-attachments/assets/ebffa626-405b-4adc-a374-09c2d8e3275d" /><br><br>
+ <p align="left">
+<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/8817d1dc-06da-4ac0-a247-210e1f856f0b" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="Image" src="https://github.com/user-attachments/assets/95b131f7-4841-4644-8e81-395ce0725d9a" /><br><br>
+  <p align="center">
+ <img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/af3593f9-d7c6-42ec-abb8-e5c6771a661d" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="Image" src="https://github.com/user-attachments/assets/d952509f-0987-4812-97e7-edd01a75de6b" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/a9b7163d-3add-458d-b59a-430d41950bd7" />
  
+**` Steps `**
+
+On Client Machine:
+  - Open Command Prompt.
+  - Run:
+      - gpupdate /force.
+  - Restart if required.
+
+**`Changes don’t apply until policy refresh or reboot`**. 
+
+**` Overview `**
+  - Group Policy changes are applied to the client machine using gpupdate /force. This forces the system to download and apply the latest policies from Active Directory. A restart ensures all settings fully take effect.
+
+**` Tasks Completed `**
+  - Opened Group Policy Management Console (**GPMC**) from Server Manager.
+  - Navigated Active Directory structure (**Forest → Domains → LAB.local**).
+  - Created new Group Policy Objects (**GPOs**) using both creation methods (**standalone and linked creation**).
+  - Edited GPO settings through Group Policy Management Editor.
+  - Configured **User Configuration policies**:
+      - Prohibit access to Control Panel and Settings.
+      - Prevent installation from removable media.
+      - Deny write access to removable disks.
+      - Enforce screen saver settings.
+      - Enable password-protected screen saver.
+      - Set screen saver timeout to 550 seconds.
+      - Force specific screen saver (**scrnsaver.scr**).
+  - Configured **Computer Configuration policies**:
+     - Disabled Microsoft Defender Antivirus.
+     - Disabled Guest accounts.
+     - Configured Restricted Groups to control local administrators (**HR users excluded from admin rights**).
+  - Linked HR Lab GPO to the Accounts OU.
+  - Verified policy scope by applying GPO at OU level.
+  - Forced policy update on client machine using gpupdate /force.
+  - Restarted client to apply all Group Policy settings.
+  - Confirmed policy enforcement across domain-joined systems.<br><br>
+
+  **`Phase IV: File Server and Permissions`**<br><br>
+
+
