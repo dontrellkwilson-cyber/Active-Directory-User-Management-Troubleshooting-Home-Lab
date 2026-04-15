@@ -574,13 +574,100 @@ On Client Machine:<br>
   - Tested access to confirm correct permissions and restrictions.<br>
   - Confirmed integration of Active Directory, Group Policy, NTFS, and share permissions.<br><br>
 
-<p align="center"> <strong>Phase V: DNS and DHCP Configuration</strong></p><br>
+<p align="center"> <strong>Phase V: DHCP Configuration and Network Address Assignment</strong></p><br>
 
-**` DNS and DHCP Key Concepts: `**
-   - 
+**` DHCP Key Concepts: `**
+   - DHCP automatically assigns IP addresses to client devices.<br>
+   - It removes the need for manual IP configuration.<br>
+   - DHCP works closely with DNS to resolve domain names in Active Directory.<br>
+   - DHCP scopes define the range of available IP addresses for clients.<br>
+   - Lease duration controls how long a device keeps an assigned IP address.<br>
+   - DHCP reservations assign a fixed IP to specific devices.<br>
+   - DHCP options provide settings like default gateway and DNS server.<br>
+   - Active Directory relies on DHCP for consistent network connectivity between clients and domain.<br><br>
    
 **`Lab Overview:`**
-  - 
+  - This phase focuses on core network services that support Active Directory. A DHCP scope is configured to automatically assign IP addresses, subnet masks, default gateway, and DNS settings to client machines. This removes the need for manual network configuration and ensures consistent addressing across the domain. After configuration, client systems receive IP settings automatically from the DHCP server. Connectivity is tested by joining a Windows client to the domain and verifying communication with the domain controller.
 
- <p align="center"> <strong>:</strong></p><br>
- <p align="center">
+<p align="center">Installing DHCP Server <strong>:</strong></p><br>
+<p align="center">
+<img width="450" height="450" alt="image" src="https://github.com/user-attachments/assets/54063a32-26f9-4d96-b988-9c90f2823bd5" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="450" height="450" alt="image" src="https://github.com/user-attachments/assets/a1ca2eff-9837-4c1f-be96-91a4f332ba3b" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="450" height="450" alt="image" src="https://github.com/user-attachments/assets/795a5d4f-ff27-446c-aea3-6c55ae971238" /><br><br>
+ 
+**` Installing DHCP Server: `**
+  - Open Server Manager on the domain controller.<br>
+  - Select Add Roles and Features.<br>
+  - Choose Role-based installation.<br>
+  - Select the correct server (DC02).<br>
+  - Select DHCP Server role.<br>
+  - Add required features when prompted.<br>
+  - Complete installation wizard.<br>
+  - Open DHCP post-install configuration.<br>
+  - Authorize DHCP server in Active Directory.<br>
+  - Confirm DHCP service is running.<br>
+
+**` Overview: `**
+  - The DHCP Server role was installed through Server Manager to enable automatic IP address assignment for domain-joined clients. This setup allows the domain controller to distribute network configuration settings such as IP address, subnet mask, gateway, and DNS. It supports consistent connectivity and simplifies network management across the Active Directory environment.<br><br>
+
+<p align="center">Configuring DHCP Scope and Network Options in Active Directory:</strong></p><br>
+<p align="center">
+<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/607cab9c-2168-442e-8c41-fbfea0440f98" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/da7ef310-4619-4d77-840d-1e3071c55fcd" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/f5e71db1-143b-4fad-ad28-fd597dd5fa86" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/afdcca0d-d0d9-44aa-aed6-e2e2a1a275cc" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/b44ae450-9b93-4604-a12e-1515d939766a" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/93504523-378e-46b5-b784-ad6d20bc53c5" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/6a84c80a-049b-4516-b14f-7be054d70e59" /><br><br>
+
+**` Domain Controller baseline from Phase 1: `**
+  - Domain Controller IP: **192.168.56.10**<br>
+  - Subnet mask: **255.255.255.0**<br>
+  - DNS server: **192.168.56.10**<br>
+  
+Active Directory Domain Services already installed and functional.<br>
+Host-Only network used for isolated lab communication.<br>
+These settings define the core infrastructure DHCP must support.<br>
+
+**` DHCP Scope Configuration (Client Addressing Layer) `**
+  - Open DHCP Management Console.<br>
+  - Expand IPv4 and create new scope.<br>
+  - Set scope name: Lab Client Scope.<br>
+  - Define IP range: **192.168.56.100 to 192.168.56.200**<br>
+  - Set subnet mask: **255.255.255.0**<br>
+  - Add exclusion range: **192.168.56.10** (Domain Controller static IP).<br>
+  - Set lease duration for lab usage, example 8 days.<br>
+
+**` DHCP Options Configuration (Network Services Layer)`**
+  - Set default gateway.
+      - Leave blank for isolated Host-Only network.<br>
+  - Set only if NAT internet access is required.<br>
+  - Set DNS server.<br>
+  - **192.168.56.10** (Domain Controller).<br>
+  - Set domain name.<br>
+  - Match Active Directory domain created in Phase 1.<br>
+  - Apply and activate scope.<br>
+
+**` Overview: `**
+  - DHCP was configured on the domain controller using the existing Phase 1 network setup. The Domain Controller used a static IP of 192.168.56.10 with DNS set to itself, supporting Active Directory and domain services within a Host-Only isolated network.<br>
+  - A DHCP scope was created to assign client IP addresses from 192.168.56.100 to 192.168.56.200 with a 255.255.255.0 subnet mask. The Domain Controller IP was excluded to prevent conflicts, and a lease duration was set for address management.<br>
+  - DHCP options were configured to match the domain environment. The default gateway was left blank due to the isolated network design. DNS was set to 192.168.56.10, and the Active Directory domain name was applied so clients receive correct domain configuration automatically.<br><br>
+
+<p align="center">Testing DHCP Configuration on Client Machine:</strong></p><br>
+<p align="center">
+<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/bde15900-84b0-4026-9495-1ca98820edd9" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/3529e415-68ff-46c6-987f-df3eec74bbe3" /><br>
+ <p align="left">
+<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/2175c445-0f47-47d6-a077-0b807b6e74fc" />&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/4bd4f186-ddf2-4ab2-a978-356e72228b54" />&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/8670c98a-b4e8-4288-88b2-79be96cb404c" /><br>
+
+**` Overview: `**
+  - Client testing confirmed DHCP assigned a valid IP from the 192.168.56.100–200 range. The client received correct subnet and DNS set to 192.168.56.10. Connectivity to the domain controller and Active Directory services worked as expected.<br>
+
+**` Key Tasks Completed: `**
+  - Installed DHCP Server role using Server Manager.<br>
+  - Configured DHCP server within Active Directory environment.<br>
+  - Created IPv4 DHCP scope for client IP assignment.<br>
+  - Defined IP range **192.168.56.100 to 192.168.56.200**<br>
+  - Set subnet mask to **255.255.255.0**<br>
+  - Excluded Domain Controller static IP **192.168.56.10**<br>
+  - Configured lease duration for client address allocation.<br>
+  - Set DNS server option to **192.168.56.10**<br>
+  - Applied Active Directory domain name in DHCP options.<br>
+  - Left default gateway blank due to isolated Host-Only network.<br>
+  - Activated DHCP scope for client distribution.<br>
+  - Verified DHCP service functionality in server console.<br>
+  - Tested client machine IP assignment using DHCP.<br>
+  - Confirmed correct subnet, DNS, and domain configuration on client.<br>
+  - Verified communication between client system and Domain Controller.<br>
+  - Confirmed Active Directory connectivity through DHCP configuration.<br>
