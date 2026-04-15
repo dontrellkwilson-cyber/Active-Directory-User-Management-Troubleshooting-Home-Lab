@@ -360,8 +360,81 @@ On Client Machine:<br>
    - Effective permissions are determined by the combination of NTFS and share permissions.<br><br>
    
    **`Lab Overview:`**
-  - This phase focuses on creating a file server and controlling access using Active Directory security groups. Shared folders are created on the domain controller or a member server. Permissions are applied to restrict or allow access based on user roles such as HR and Finance. This demonstrates how organizations secure data and enforce least privilege access.<br>
+  - This phase focuses on creating a file server and controlling access using Active Directory security groups. Shared folders are created on the domain controller or a member server. Permissions are applied to restrict or allow access based on user roles such as HR and Finance. This demonstrates how organizations secure data and enforce least privilege access.<br><br>
 
+ <p align="center"> <strong>File Server Role Installation and Configuration:</strong></p><br>
+ <p align="center">
+<img width="700" height="700" alt="Image" src="https://github.com/user-attachments/assets/eeed713d-4e07-4887-97d5-0b18b0fa44a2" /><br>
+<b>The File Server role was already installed and verified through Server Manager under File and Storage Services.</b><br>
+  
+**`Steps to Install File Server Role:`**
+  - Open Server Manager.<br>
+  - Click Manage.<br>
+  - Select Add Roles and Features.<br>
+  - Click Next until you reach Server Roles.<br>
+  - Select File and Storage Services.<br>
+  - Expand and check File Server.<br>
+  - Click Next and then Install.<br>
+  - Wait for installation to complete.<br>
+  - Verify File Server role is installed in Server Manager.<br><br>
 
+<p align="center"> <strong>Installing Windows Server Backup:</strong></p><br>
+<p align="center">
+<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/f340f642-e7f9-4bad-9212-fdfc8488dfec" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/cd6c5150-511d-409c-a430-92c696d12f39" /><br>
+
+ A backup drive is created to store copies of file server data. It helps recover files if data is deleted or damaged. It ensures shared resources are protected and can be restored when needed.<br><br>
+
+ <p align="center"> <strong>Creating a Backup Drive Using Disk Management:</strong></p><br>
+ <p align="center">
+<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/07fb66af-94b1-4ddf-8d86-fe87cd849911" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/a0afe743-4890-4bde-838a-c5c3b0b516ab" /><br>
+<p align="left">
+<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/bf4d27a2-7cf7-4f1a-a706-10b717d380c1" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/ef99be77-2ef6-4005-a4b8-eacff677590e" />
+<p align="center">
+<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/6dad557c-3593-41f0-a769-33c772b69839" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/623c6d25-e452-4233-b87f-dd97272f341e" />
+ 
+ **` Steps to Install Windows Backup Server: `**
+  - Open Server Manager.<br>
+  - Click Manage.<br>
+  - Select Add Roles and Features.<br>
+  - Click Next until Features section.<br>
+  - Scroll and select Windows Server Backup.<br>
+  - Click Next then Install.<br>
+  - Wait for installation to complete.<br>
+  - Open Tools and confirm Windows Server Backup is available.<br><br>
+  
+ **` Steps to Create a Backup Drive Using Disk Management: `**
+  - Open Disk Management.<br>
+  - Right-click the main drive (usually C:).<br>
+  - Select Shrink Volume.<br>
+  - Enter amount of space to shrink (example: 20–50 GB).<br>
+  - Click Shrink.<br>
+  - Right-click the new unallocated space.<br>
+  - Select New Simple Volume.<br>
+  - Click Next.<br>
+  - Assign a drive letter (D: or E:).<br>
+  - Name the volume Backup.<br>
+  - Format as NTFS.<br>
+  - Click Finish.<br>
+  - Verify the new drive appears in File Explorer.<br><br>
+
+**` Steps to Create a Daily Backup Using Windows Server Backup: `**
+  - Open Server Manager.<br>
+  - Click Tools.<br>
+  - Select Windows Server Backup.<br>
+  - Click Backup Schedule.<br>
+  - Select Full Server or Custom backup.<br>
+  - Choose items to back up if Custom is selected.<br>
+  - Select destination drive (Backup Drive created in Disk Management).<br>
+  - Choose Daily Backup schedule.<br>
+  - Set backup time (example: 2:00 AM).<br>
+  - Confirm backup destination settings.<br>
+  - Click Finish to apply schedule.<br>
+  - Verify backup job appears in Windows Server Backup console.<br><br>
+
+**` Overview: `**
+  - This phase focuses on setting up backup and recovery for the file server. Windows Server Backup was installed to enable system protection. A backup drive was created using Disk Management by shrinking existing storage and formatting a new NTFS volume. A daily backup schedule was configured to capture system state or selected data. This ensures critical server data and configurations can be restored after failure, corruption, or accidental deletion.<br><br>
+
+<p align="center"> <strong>Creating and Configuring Shared Folders</strong></p><br>
+<p align="center">
 
 
