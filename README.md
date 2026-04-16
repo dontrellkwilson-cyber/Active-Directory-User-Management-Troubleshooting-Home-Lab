@@ -659,6 +659,7 @@ Client testing confirmed that DHCP assigned an IP from 192.168.56.100–200. The
 
 ----------------
 
+<h2 align="center"><strong>Phase VI: PowerShell Automation</strong></h2>
 
 
 
