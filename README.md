@@ -49,7 +49,7 @@ PowerShell<br>
 - Active Directory provides centralized identity and access management.
 - A domain controller hosts Active Directory and handles authentication and security policies across the network.
 - Active Directory manages authentication, passwords, logins, users, groups, and computers, and controls access through permissions and group policies.
-- Group Policy Objects enforce security settings and system configurations.
+- Group Policy Objects enforce security settings and system configuration.
 - Active Directory also supports least privilege access to protect network resources.
 
 <b>**`Lab Overview:`**</b>
@@ -69,7 +69,7 @@ This step prepares the server for domain controller deployment by renaming the s
  - Restart the server when prompted.
 <br><br>  
 <p align="center"> <strong>Configuring Network Adapters for the Server:</strong> </p>
-<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/9a9e9c27-ea0a-4a1b-8402-d452e8960920" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/e559f4ec-497c-4b7f-900a-dac157b7a590" /> </p>
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/9a9e9c27-ea0a-4a1b-8402-d452e8960920" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/e559f4ec-497c-4b7f-900a-dac157b7a590" /> </p>
 
  **`Network Services Configuration:`**
 - The Host-Only Adapter is the isolated internal lab network where the Domain Controller and Windows 11 Clients will communicate with each other.
@@ -84,7 +84,7 @@ This step prepares the server for domain controller deployment by renaming the s
 - VirtualBox Host-Only Network uses a defined IP range. The first step is identifying the subnet range assigned to the host-only adapter. This range determines valid IP addresses for the virtual machines and the host system within the isolated network.
 <br><br>
 <p align="center"> <strong>Configuring DC with a Static IPv4 Address:</strong> </p>
-<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/285b3c8a-160d-48ae-a5f5-cec6a8d68302" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/090cb017-73dc-4815-9cb6-b528da504f6c" /> </p>
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/285b3c8a-160d-48ae-a5f5-cec6a8d68302" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/090cb017-73dc-4815-9cb6-b528da504f6c" /> </p>
 
 **`Assigning Static Configuration:`**
  - Open IPv4 settings.
@@ -93,17 +93,16 @@ This step prepares the server for domain controller deployment by renaming the s
  - Save settings and verify connectivity using ping.
 <br><br>
 <p align="center"> <strong>Installing AD DS & Promoting Server to DC:</strong> </p>
-<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/eab11d16-5ca2-4f2a-a3fe-3fd09b21c8b3" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/07c707b8-6917-42aa-9326-827b5c0877ec" /> </p>
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/eab11d16-5ca2-4f2a-a3fe-3fd09b21c8b3" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/07c707b8-6917-42aa-9326-827b5c0877ec" /> </p>
 
 **`Installing Active Directory:`**
- - I installed AD DS and promoted the server to a domain controller. The server now handles authentication, domain logins, and directory services.
- - During promotion, I created a new forest and domain, set the Directory Services Restore Mode password, and allowed the server to install and configure DNS.
- - After the restart, the server began handling authentication, domain logins, and directory services.
- - It now stores user accounts, computers, and security policies, and it controls access to resources across the environment.
- - This step establishes the foundation for centralized identity and access management in my lab.
+- Installed AD DS and promoted the server to a domain controller while creating a new forest and domain, setting the Directory Services Restore Mode password, and enabling DNS installation during promotion.
+- After restart, the system handled authentication, domain logins, and directory services.
+- The domain stores user accounts, computers, and security policies while controlling access across the environment.
+- This step established the foundation for centralized identity and access management in the lab.
 <br><br>
 <p align="center"> <strong>Confirmation of Creation of the DC:</strong> </p>
-<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/a77db9d3-e4df-471a-a3fe-0504288d91b9" /> &nbsp;&nbsp;&nbsp;<img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/683029ae-ab6c-40f9-9367-5ece9824c468" /> </p>
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/a77db9d3-e4df-471a-a3fe-0504288d91b9" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/683029ae-ab6c-40f9-9367-5ece9824c468" /> </p>
  
 **`Key Tasks Completed:`**
 - Server renamed to **DC02** to match the domain controller role and rebooted successfully.
@@ -117,64 +116,61 @@ This step prepares the server for domain controller deployment by renaming the s
 
 ----------------
 
-<h3 align="center"><strong>Phase II: Organizational Unit (OU) Design & User Provisioning</strong></h3>
+<h2 align="center"><strong>Phase II: Organizational Unit (OU) Design & User Provisioning</strong></h2>
 
- **` Organizational Unit (OU) Design & User Provisioning Key Concepts: `** 
-  -  OUs organize Active Directory objects like users and computers into structured groups for easier management.<br>
-  -  OU design follows business structure, such as departments, roles, or locations.<br>
-  -  User provisioning includes creating and configuring user accounts with the correct attributes and settings.<br>
-  -  Security groups are used to assign permissions and control access to resources.<br>
-  -  OU structure supports delegation of administration and simplifies policy application through Group Policy Objects.<br><br>
+**`Organizational Unit (OU) Design & User Provisioning Key Concepts:`** 
+-  OU design follows business structure, such as departments, roles, or locations.
+-  User provisioning includes creating and configuring user accounts with the correct attributes and settings.
+-  Security groups are used to assign permissions and control access to resources.
+-  OU structure supports delegation of administration and simplifies policy application through Group Policy Objects.
 
-**` Lab Overview: `** 
--  This phase focuses on building and managing the Active Directory structure. Organizational Units are created to organize users and computers for structured administration. New user accounts are added and placed into appropriate security groups, including administrator accounts for elevated privileges. A Windows 10 system is then joined to the domain to integrate it with Active Directory. After the join process, a newly created domain user account is used to log in and verify authentication and access control functionality.<br><br>
+<b>**`Lab Overview:`**</b>
 
-**`Active Directory Infrastructure Setup:`**<br/>
- <p align="center"> <strong>Creating OUs:</strong> </p> 
-<p align="center">
-  <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/44a17e7f-d772-4b59-bee7-0db5bd3420f4" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/885f9994-7b3a-4247-a0d6-8169263b087e" /><br><br>
-  <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/4d1b5e38-a3e9-4599-8450-66f123605b18" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/c7b5f4ba-83ba-47c2-90d8-01dee3115750" />
+This phase builds and manages the Active Directory structure. Organizational Units organize users and computers for easier administration. New user accounts are created and placed into security groups, including admin accounts for elevated privileges. A Windows 10 system is joined to the domain to integrate with Active Directory. A new domain user account is then used to log in and verify authentication and access control.
 
-**` OU & User Account Structure in Active Directory: `**
-- Organizational Units in Active Directory are not meant for built-in groups or default users.<br>
-- Built-in groups exist for system functions, and adding standard users to them creates security and management issues.<br>
-- New OUs are created to keep Active Directory clean and organized. They allow structured management of users and computers and support future Group Policy applications.<br>
-- To create an OU, open the domain, right-click the domain name, such as LAB.local, select New, then select Organizational Unit, enter a name, and select OK.<br>
-- Inside Organizational Units, accounts are created and organized based on function or department. OUs can contain user accounts like Jim and Patricia, as well as groups such as HR or Finance.<br>
-- Separating users into OUs improves control, simplifies administration, and supports scalable Group Policy management across the domain.<br><br>
+<h3 align="center">Active Directory Infrastructure Setup:</h3>
+<p align="center"> <strong>Creating OUs:</strong> </p> 
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/44a17e7f-d772-4b59-bee7-0db5bd3420f4" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/885f9994-7b3a-4247-a0d6-8169263b087e" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/4d1b5e38-a3e9-4599-8450-66f123605b18" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/c7b5f4ba-83ba-47c2-90d8-01dee3115750" />
 
- <p align="center"> <strong>Joining a Windows Client to an Active Directory Domain:</strong> </p><br/>
-<p align="center">
- <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/3a3307e2-8412-49f6-8ad9-ab680308cef5" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/9cb42af5-5a08-415a-8f18-e8f4c54fc304" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/deb2cf54-a301-4f5a-9184-ea6df373cc8a" /><br><br>
+**`OU & User Account Structure in Active Directory:`**
+- Built-in groups support system functions, while standard users should not be placed inside them due to security and management issues.
+- Organizational Units structure Active Directory by separating users and computers for organized administration and Group Policy application.
+- To create an OU, open the domain in Active Directory Users and Computers, right-click the domain name, select New, choose Organizational Unit, enter a name, then confirm.
+- OUs contain user accounts and groups organized by department such as HR and Finance.
+- This structure improves control, simplifies administration, and supports scalable Group Policy management.
+<br><br>
+<p align="center"> <strong>Joining a Windows Client to an Active Directory Domain:</strong> </p>
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/3a3307e2-8412-49f6-8ad9-ab680308cef5" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/9cb42af5-5a08-415a-8f18-e8f4c54fc304" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/deb2cf54-a301-4f5a-9184-ea6df373cc8a" />
 
-**` Domain Integration of a Windows Client with Active Directory: `**
-   - Adding a client machine to the domain connects it to Active Directory so it can authenticate users through the domain controller.<br>
-   - This allows centralized login, consistent security policies, and controlled access to network resources.<br>
-   - It ensures users sign in with domain accounts instead of local accounts, which improves security and simplifies management for administrators.<br><br>
+**`Domain Integration of a Windows Client with Active Directory:`**
+- Adding a client machine to the domain connects it to Active Directory so it can authenticate users through the domain controller.
+- This allows centralized login, consistent security policies, and controlled access to network resources.
+- It ensures users sign in with domain accounts instead of local accounts, which improves security and simplifies management for administrators.
    
-**` Steps: `**
-   - Set the client DNS to the domain controller IP address.<br>
-   - Open system settings on the Windows 10 client.<br>
-   - Go to About or System Properties.<br>
-   - Select Rename this PC (advanced).<br>
-   - Choose the Domain option.<br>
-   - Enter the domain name. Provide domain admin credentials.<br>
-   - Restart the client machine.<br>
-   - After reboot, sign in using a domain user account.<br><br>
+**`Steps:`**
+- Set the client DNS to the domain controller IP address.
+- Open system settings on the Windows 10 client.
+- Go to About or System Properties.
+- Select Rename this PC (advanced).
+- Choose the Domain option.
+- Enter the domain name. Provide domain admin credentials.
+- Restart the client machine.
+- After reboot, sign in using a domain user account.
+<br><br>
+<p align="center"> <strong>Enabling Domain User Login on Client Machines</strong> </p>
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/d1cc46eb-d728-4301-8b85-d142596e5d3a" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/245491b6-0802-43c6-82be-1d7a41d801c9" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/dbcbd970-22d5-40c2-9749-c7a8dc3cccb9" />
 
-<p align="center"> <strong>Enabling Domain User Login on Client Machines</strong> </p><br/>
-<p align="center">
-<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/d1cc46eb-d728-4301-8b85-d142596e5d3a" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/245491b6-0802-43c6-82be-1d7a41d801c9" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/dbcbd970-22d5-40c2-9749-c7a8dc3cccb9" />
-
-**` Key Tasks Completed: `**
-- Created Organizational Units to structure Active Directory by department and role.<br>
-- Provisioned user accounts **(Patricia Johnson & Jim Watkins)** and security groups **(HR & Finance)** within appropriate OUs.<br>
-- Followed best practices by avoiding default containers and using dedicated OUs.<br>
-- Joined Windows 10 client machine **(CLIENT02)** to the domain **(LAB.local)** using domain credentials.<br>
-- Configured CLIENT02 DNS **(192.168.56.10)** to point to the domain controller **(LAB.local)** for proper communication.<br>
-- Verified domain integration by logging in with a domain user account.<br>
-- Confirmed authentication and access control through the domain controller.<br><br>
+**`Key Tasks Completed:`**
+- Created Organizational Units to structure Active Directory by department and role.
+- Provisioned user accounts **Patricia Johnson & Jim Watkins** and security groups **HR & Finance** within appropriate OUs.
+- Followed best practices by avoiding default containers and using dedicated OUs.
+- Joined Windows 10 client machine **(CLIENT02)** to the domain **LAB.local** using domain credentials.
+- Configured CLIENT02 DNS **192.168.56.10** to point to the domain controller **LAB.local** for proper communication.
+- Verified domain integration by logging in with a domain user account.
+- Confirmed authentication and access control through the domain controller.
+<br>
 ----------------
+
 <h3 align="center"><strong>Phase III: Group Policy Management</strong></h3>
 
 **` GPOs Key Concepts: `** 
