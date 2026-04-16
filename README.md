@@ -8,13 +8,13 @@ This lab covers core Microsoft Active Directory tasks. You create and manage use
 
 <div align="center">
  
-<b>**`Directory and Identity Services:`**</b>
+<b>`Directory and Identity Services:`</b>
 
 Active Directory Domain Services (**`AD DS`**)<br>
 Active Directory Users & Computers (**`ADUC`**)<br>
 Group Policy Management<br>
 
-<b>**`Networking Services:`**</b>
+<b>`Networking Services:`</b>
 
 DNS<br>
 DHCP<br>
@@ -22,14 +22,14 @@ TCP/IP IPv4 Addressing<br>
 Static IP Configuration<br>
 Host-Only Networking<br>
 
-<b>**`File Services & Access Control:`**</b>
+<b>`File Services & Access Control:`</b>
 
 File Server<br>
 SMB Sharing<br>
 NTFS Permissions<br>
 Group Policy Objects<br>
 
-<b>**`Scripting and Tools:`**</b>
+<b>`Scripting and Tools:`</b>
 
 PowerShell<br>
 </div>
@@ -44,7 +44,7 @@ PowerShell<br>
  
 <h2 align="center"><strong>Phase I: Environment Setup</strong></h2>
 
-<b>**`Active Directory Purpose & Key Concepts:`**</b>
+<b>`Active Directory Purpose & Key Concepts:`</b>
 - The server promoted to a domain controller is the most important system in a company’s network, as it hosts Active Directory.
 - Active Directory provides centralized identity and access management.
 - A domain controller hosts Active Directory and handles authentication and security policies across the network.
@@ -52,7 +52,7 @@ PowerShell<br>
 - Group Policy Objects enforce security settings and system configuration.
 - Active Directory also supports least privilege access to protect network resources.
 
-<b>**`Lab Overview:`**</b>
+<b>`Lab Overview:`</b>
 
 This step prepares the server for domain controller deployment by renaming the server, configuring network adapters, and setting a static IP address. A static IP keeps the address stable instead of changing after lease renewal. This setup supports Active Directory, DNS, and DHCP, and maintains reliable network communication across the environment.
 
@@ -124,7 +124,7 @@ This step prepares the server for domain controller deployment by renaming the s
 -  Security groups are used to assign permissions and control access to resources.
 -  OU structure supports delegation of administration and simplifies policy application through Group Policy Objects.
 
-<b>**`Lab Overview:`**</b>
+<b>`Lab Overview:`</b>
 
 This phase builds and manages the Active Directory structure. Organizational Units organize users and computers for easier administration. New user accounts are created and placed into security groups, including admin accounts for elevated privileges. A Windows 10 system is joined to the domain to integrate with Active Directory. A new domain user account is then used to log in and verify authentication and access control.
 
@@ -182,7 +182,7 @@ This phase builds and manages the Active Directory structure. Organizational Uni
 -  Policy application follows Active Directory inheritance and updates through refresh cycles or gpupdate /force.
 -  This approach reduces manual configuration and maintains consistent system settings across the domain.
 
-<b>**`Lab Overview:`** </b>
+<b>`Lab Overview:`</b>
 
 This phase manages security and settings using Group Policy. GPOs are created and linked to Organizational Units to apply settings to users and computers. Security settings include password rules, account lockout policies, and system settings, including Control Panel access and software installation limits. Client machines are updated and tested to confirm policy application across domain users and systems.
 
@@ -286,7 +286,7 @@ This Group Policy Object enforces user and system security settings across the d
 
 <p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/91c0e541-9a5d-46d2-981c-f39cdc3f8a99" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/b0656635-e263-4feb-bbf6-5c94e4178bc1" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/8650ec29-3938-4476-897d-8e57cacbc1c8" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/43f4af4e-5cb2-4b22-926e-a8c3a7d7da18" />
 
- **` Steps: `**
+ **`Steps:`**
 - Right-click OU / Domain.
 - Click Link an Existing GPO.
 - Select your GPO.
