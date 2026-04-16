@@ -61,12 +61,12 @@ This step prepares the server for domain controller deployment by renaming the s
 <p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/64b0fe4f-d9cc-4e6d-9910-b6e19a07274e" /> </p>
  
 **`Steps:`**
- - Open Server Manager.
- - Click Local Server on the left panel.
- - Locate the Computer Name field.
- - Click the current computer name and enter the System Properties window, click Change.
- - Enter the new Computer Name and click OK to apply changes.
- - Restart the server when prompted.
+- Open Server Manager.
+- Click Local Server on the left panel.
+- Locate the Computer Name field.
+- Click the current computer name and enter the System Properties window, click Change.
+- Enter the new Computer Name and click OK to apply changes.
+- Restart the server when prompted.
 <br><br>  
 <p align="center"> <strong>Configuring Network Adapters for the Server:</strong> </p>
 <p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/9a9e9c27-ea0a-4a1b-8402-d452e8960920" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/e559f4ec-497c-4b7f-900a-dac157b7a590" /> </p>
@@ -87,10 +87,10 @@ This step prepares the server for domain controller deployment by renaming the s
 <p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/285b3c8a-160d-48ae-a5f5-cec6a8d68302" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/090cb017-73dc-4815-9cb6-b528da504f6c" /> </p>
 
 **`Assigning Static Configuration:`**
- - Open IPv4 settings.
- - Select manual configuration.
- - Enter static IP address, subnet mask, default gateway, and DNS server.
- - Save settings and verify connectivity using ping.
+- Open IPv4 settings.
+- Select manual configuration.
+- Enter static IP address, subnet mask, default gateway, and DNS server.
+- Save settings and verify connectivity using ping.
 <br><br>
 <p align="center"> <strong>Installing AD DS & Promoting Server to DC:</strong> </p>
 <p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/eab11d16-5ca2-4f2a-a3fe-3fd09b21c8b3" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/07c707b8-6917-42aa-9326-827b5c0877ec" /> </p>
@@ -156,7 +156,7 @@ This phase builds and manages the Active Directory structure. Organizational Uni
 - Enter the domain name. Provide domain admin credentials.
 - Restart the client machine.
 - After reboot, sign in using a domain user account.
-<br><br>
+<br>
 <p align="center"> <strong>Enabling Domain User Login on Client Machines</strong> </p>
 <p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/d1cc46eb-d728-4301-8b85-d142596e5d3a" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/245491b6-0802-43c6-82be-1d7a41d801c9" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/dbcbd970-22d5-40c2-9749-c7a8dc3cccb9" />
 
@@ -223,21 +223,21 @@ GPOs link to a Site, Domain, or OU.
 
 <p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/ceb9d0af-eb68-4ea7-ad19-4aaec78e56d9" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/9e9484a2-1e6a-4ae9-8864-afce8cef43c3" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/8ff5cf62-1c2e-4f1f-b122-0b6b0e2da0be" />
 
- <b>There are two ways to create a new GPO.
-   - The first option creates the GPO first and links it to a domain or OU later.
-   - The second option creates and links the GPO at the same time.
+There are two ways to create a new GPO.
+- **Option 1**: Creates the GPO first and links it to a domain or OU later.
+- **Option 2**: Creates and links the GPO at the same time.
    
 **`Method I:`**
-   - Click Group Policy Objects.
-   - Right-click New.
-   - Enter a name.
-   - Click OK.
+- Click Group Policy Objects.
+- Right-click New.
+- Enter a name.
+- Click OK.
 
 **`Method II:`**
-  - Right-click the OU or Domain.
-  - Click Create a GPO in this domain, and Link it here.
-  - Enter a name.
-  - Click OK.
+- Right-click the OU or Domain.
+- Click Create a GPO in this domain, and Link it here.
+- Enter a name.
+- Click OK.
  <br>
  
 **`Step 4:`**
@@ -263,23 +263,22 @@ Policies enforce rules; users cannot override them.
 This GPO applies specific controls to manage user behavior and system security.
 
 **`User Configs:`**
- 1. **Prohibit access to Control Panel and Settings** restricts users from changing system configurations.
- 2. **Prevent installation from removable media** blocks users from installing unauthorized software from USB devices.
- 3. **Removable disks deny write access** stops users from copying or transferring data to external drives.
- 4. **Screen saver enforcement** ensures systems lock after inactivity.
- 5. **Password-protected screen saver** requires authentication to regain access.
- 6. **Screen saver timeout of 550 seconds** locks the system after a set idle period.
- 7. **Force specific screen saver** standardizes the screen lock behavior across all users.
+ 1. Prohibit access to the Control Panel and Settings, which restricts users from changing system configurations.
+ 2. Prevent installation from removable media blocks users from installing unauthorized software from USB devices.
+ 3. Removable disks deny write access, which stops users from copying or transferring data to external drives.
+ 4. Screen saver enforcement ensures systems lock after inactivity.
+ 5. Password-protected screen saver requires authentication to regain access.
+ 6. Screen saver timeout of 550 seconds locks the system after a set idle period.
+ 7. Force-specific screen saver standardizes the screen lock behavior across all users.
 
 **`Computer Configs:`**
- 1. **Disable Microsoft Defender Antivirus** turns off built-in antivirus protection for lab control or testing scenarios.
- 2. **Disable guest accounts** prevents unauthorized or anonymous access to systems.
- 3. **Restricted Groups** define who has local administrator rights, ensuring only approved users have elevated access while standard users, such as HR, do not.
+ 1. Disable Microsoft Defender Antivirus turns off built-in antivirus protection for lab control or testing scenarios.
+ 2. Disabling guest accounts prevents unauthorized or anonymous access to systems.
+ 3. Restricted Groups define who has local administrator rights, ensuring only approved users have elevated access while standard users, such as HR, do not.
      
 **`Overview:`**
-- This Group Policy Object enforces user and system security settings across the domain.
-- **User Configuration** restricts access to Control Panel and system settings, blocks installation from removable media, and denies write access to removable disks. It also enforces screen saver policies, including password protection, a timeout of 550 seconds, and a specific screen saver.
-- **Computer Configuration** disables Microsoft Defender Antivirus and guest accounts to control system access. Restricted Groups are configured to define local administrator membership, ensuring only authorized users have admin rights while standard users, such as HR, are not granted elevated privileges.
+
+This Group Policy Object enforces user and system security settings across the domain. **User Configuration** restricts access to Control Panel and system settings, blocks installation from removable media, and denies write access to removable disks. It also enforces screen saver policies, including password protection, a timeout of 550 seconds, and a specific screen saver. **Computer Configuration** disables Microsoft Defender Antivirus and guest accounts to control system access. Restricted Groups are configured to define local administrator membership, ensuring only authorized users have admin rights while standard users, such as HR, are not granted elevated privileges.
 <br>
 
 **`Step 5:`**
@@ -294,9 +293,8 @@ This GPO applies specific controls to manage user behavior and system security.
 - Click OK.
 
 **`Overview:`**
-- Linking the **HR Lab GPO** to the **`Accounts OU`** applies all configured policies to users and computers within that OU.
-- All accounts in this OU automatically receive restrictions such as limited system access, removable media controls, and enforced screen lock settings.
-- Any new user added to the OU inherits these policies, ensuring consistent and centralized management.
+
+Linking the **HR Lab GPO** to the **`Accounts OU`** applies all configured policies to users and computers within that OU. All accounts in this OU automatically receive restrictions such as limited system access, removable media controls, and enforced screen lock settings. Any new user added to the OU inherits these policies, ensuring consistent and centralized management.
 <br>
  
 **`Step 6:`**
@@ -316,7 +314,8 @@ On Client Machine:
 Changes don’t apply until policy refresh or reboot.
 
 **`Overview:`**
-  - Group Policy changes are applied to the client machine using gpupdate /force. This forces the system to download and apply the latest policies from Active Directory. A restart ensures all settings fully take effect.
+
+Group Policy changes are applied to the client machine using gpupdate /force. This forces the system to download and apply the latest policies from Active Directory. A restart ensures all settings fully take effect.
 
 **`Key Tasks Completed:`**
 - Opened Group Policy Management Console (**GPMC**) from Server Manager.
@@ -426,7 +425,8 @@ A backup drive is created to store copies of the file server data. It helps reco
 - Verify backup job appears in Windows Server Backup console.
 
 **`Overview:`**
-- This setup protects server data by enabling scheduled backups and recovery of files, system state, and configurations after failure, corruption, or accidental deletion.
+
+This setup protects server data by enabling scheduled backups and recovery of files, system state, and configurations after failure, corruption, or accidental deletion.
 <br>
 <p align="center"> <strong>Creating and Configuring Shared Folders:</strong></p>
 <p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/40c50c92-dae7-4ec7-96c4-69212255eb29" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/8feaa51c-c0b5-4289-afc1-21f82f6875cf" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/74eabb85-f985-4cab-9c41-9710396cca79" />
@@ -446,8 +446,10 @@ A backup drive is created to store copies of the file server data. It helps reco
   - Click Apply and OK.
       
 **`Overview:`**
-- Departmental shared folders were created and configured for network access. Permissions were assigned based on role to ensure secure and organized access across the environment.
+
+Departmental shared folders were created and configured for network access. Permissions were assigned based on role to ensure secure and organized access across the environment.
 <br>
+
 <p align="center"> <strong>Creating Shared Folder Organizational Unit (OU) and Security Group Management:</strong></p>
 <p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/3c78aef8-edc7-49c3-8879-8704af66dea4" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/8f49f78f-cc6e-421e-8c78-64bad1062391" />
 <p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/65d0c525-abd3-4102-a54b-cea95889db73" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/3b956647-3c83-4e6c-ad4b-c651c187c546" />
@@ -467,8 +469,10 @@ A backup drive is created to store copies of the file server data. It helps reco
 - Prepared the groups for use in shared folder permission assignment.
 
 **`Overview:`**
-- An Organizational Unit was created to organize shared resources. Security groups were configured for each department, and users were assigned accordingly, enabling centralized and consistent access control.
+
+An Organizational Unit was created to organize shared resources. Security groups were configured for each department, and users were assigned accordingly, enabling centralized and consistent access control.
 <br>
+
 <p align="center"> <strong>Assigning Security Permissions:</strong></p>
 <p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/bdad6646-39c6-470a-aa6e-9f2b8e9daa81" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/e8738a95-67e9-4140-b5e2-610048f97aa1" />
 <p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/16daffe8-b492-4062-aaad-7da239b2a230" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/e3fad763-c6ff-4c3e-8bd9-f7bcaf2e24e2" />
@@ -492,8 +496,10 @@ A backup drive is created to store copies of the file server data. It helps reco
 - Ensured permissions were assigned only through security groups and not directly to users.
 
 **`Overview:`**
-- NTFS permissions were configured on the main shared folder and applied across all subfolders to enforce controlled access. Inheritance was disabled to prevent unwanted parent permissions while retaining SYSTEM and Administrators. Default permissions were removed, and department security groups were assigned specific access levels. This design enforces least privilege and ensures access is controlled through group membership.
+
+NTFS permissions were configured on the main shared folder and applied across all subfolders to enforce controlled access. Inheritance was disabled to prevent unwanted parent permissions while retaining SYSTEM and Administrators. Default permissions were removed, and department security groups were assigned specific access levels. This design enforces least privilege and ensures access is controlled through group membership.
 <br>
+
 <p align="center"> <strong>Mapping Network Drives Using Group Policy:</strong></p>
 <p align="center"><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/e2eacfe0-a387-4881-9317-9493ba0e75ed" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/82817d58-e8f5-4507-acaf-a029c9c0f44b" />
 <p align="center"><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/8d62824a-e425-4638-a6a1-e2c031e4536f" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/2ae5fc16-bd91-4e6f-bf0f-52f7001eed9b" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/6cbfa668-8d85-4ec6-bd43-c38fdf961247" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/b33b5a37-891b-47c6-ac89-70ada3b7b597" />
@@ -517,14 +523,17 @@ A backup drive is created to store copies of the file server data. It helps reco
 - Verified the mapped drives appeared on user systems after the Group Policy update.
 
 **`Overview:`**
-- Group Policy was used to map network drives for department shared folders. A new GPO was created and linked to the appropriate organizational unit. Drive Maps settings were configured under User Configuration to point users to specific shared folder paths using UNC naming. Drive letters were assigned for easy access, and item-level targeting was used to apply each drive to the correct security group. This setup ensured users received automatic access to their department network drives based on group membership.
+
+Group Policy was used to map network drives for department shared folders. A new GPO was created and linked to the appropriate organizational unit. Drive Maps settings were configured under User Configuration to point users to specific shared folder paths using UNC naming. Drive letters were assigned for easy access, and item-level targeting was used to apply each drive to the correct security group. This setup ensured users received automatic access to their department network drives based on group membership.
 <br>
+
 <p align="center"> <strong>Verifying Network Drive Access on Client Machine:</strong></p>
 <p align="center">
 <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/9ea6a613-4969-4e9f-8156-9c9e23173a3f" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/378d8a8f-c153-4e8a-8670-1021c0e1b948" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/05979eec-fc60-40fe-a887-1dfbea520cec" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/25176253-6dac-4575-adaf-1f6c2f6cefce" />
 
 **`Overview:`**
-- Network drive access was verified on a client machine using a domain user account. The system successfully applied Group Policy settings, automatically mapping the correct departmental drives in File Explorer. Each mapped drive was accessed to confirm connectivity to the proper shared folders. Permission controls were validated by confirming that access matched the user’s security group while restricting unauthorized folders. This verified that Group Policy, shared folder permissions, and Active Directory security groups were working together correctly.
+
+Network drive access was verified on a client machine using a domain user account. The system successfully applied Group Policy settings, automatically mapping the correct departmental drives in File Explorer. Each mapped drive was accessed to confirm connectivity to the proper shared folders. Permission controls were validated by confirming that access matched the user’s security group while restricting unauthorized folders. This verified that Group Policy, shared folder permissions, and Active Directory security groups were working together correctly.
 
 **`Key Tasks Completed:`**
 - Installed and configured the File Server role.
@@ -554,99 +563,102 @@ This lab demonstrates centralized file access control using Active Directory, NT
 
 <h2 align="center"><strong>Phase V: DHCP Configuration and Network Address Assignment</strong></h2>
 
-**` DHCP Key Concepts: `**
-   - DHCP automatically assigns IP addresses to client devices.<br>
-   - It removes the need for manual IP configuration.<br>
-   - DHCP works closely with DNS to resolve domain names in Active Directory.<br>
-   - DHCP scopes define the range of available IP addresses for clients.<br>
-   - Lease duration controls how long a device keeps an assigned IP address.<br>
-   - DHCP reservations assign a fixed IP to specific devices.<br>
-   - DHCP options provide settings like default gateway and DNS server.<br>
-   - Active Directory relies on DHCP for consistent network connectivity between clients and the domain.<br><br>
+**`DHCP Key Concepts:`**
+- DHCP automatically assigns IP addresses to client devices.
+- It removes the need for manual IP configuration.
+- DHCP works closely with DNS to resolve domain names in Active Directory.
+- DHCP scopes define the range of available IP addresses for clients.
+- Lease duration controls how long a device keeps an assigned IP address.
+- DHCP reservations assign a fixed IP to specific devices.
+- DHCP options provide settings like the default gateway and the DNS server.
+- Active Directory relies on DHCP for consistent network connectivity between clients and the domain.
    
 **`Lab Overview:`**
-  - This phase focuses on core network services that support Active Directory. A DHCP scope is configured to automatically assign IP addresses, subnet masks, default gateway, and DNS settings to client machines. This removes the need for manual network configuration and ensures consistent addressing across the domain. After configuration, client systems receive IP settings automatically from the DHCP server. Connectivity is tested by joining a Windows client to the domain and verifying communication with the domain controller.
 
-<p align="center">Installing DHCP Server <strong>:</strong></p><br>
-<p align="center">
-<img width="450" height="450" alt="image" src="https://github.com/user-attachments/assets/54063a32-26f9-4d96-b988-9c90f2823bd5" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="450" height="450" alt="image" src="https://github.com/user-attachments/assets/a1ca2eff-9837-4c1f-be96-91a4f332ba3b" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="450" height="450" alt="image" src="https://github.com/user-attachments/assets/795a5d4f-ff27-446c-aea3-6c55ae971238" /><br><br>
+This phase focuses on core network services that support Active Directory. A DHCP scope is configured to automatically assign IP addresses, subnet masks, default gateway, and DNS settings to client machines. This removes the need for manual network configuration and ensures consistent addressing across the domain. After configuration, client systems receive IP settings automatically from the DHCP server. Connectivity is tested by joining a Windows client to the domain and verifying communication with the domain controller.
+
+<p align="center">Installing DHCP Server <strong>:</strong></p>
+<p align="center"><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/54063a32-26f9-4d96-b988-9c90f2823bd5" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/a1ca2eff-9837-4c1f-be96-91a4f332ba3b" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/795a5d4f-ff27-446c-aea3-6c55ae971238" />
  
-**` Installing DHCP Server: `**
-  - Open Server Manager on the domain controller.<br>
-  - Select Add Roles and Features.<br>
-  - Choose Role-based installation.<br>
-  - Select the correct server (DC02).<br>
-  - Select the DHCP Server role.<br>
-  - Add required features when prompted.<br>
-  - Complete installation wizard.<br>
-  - Open DHCP post-install configuration.<br>
-  - Authorize the DHCP server in Active Directory.<br>
-  - Confirm the DHCP service is running.<br>
+**`Installing DHCP Server:`**
+- Open Server Manager on the domain controller.
+- Select Add Roles and Features.
+- Choose Role-based installation.
+- Select the correct server (DC02).
+- Select the DHCP Server role.
+- Add required features when prompted.
+- Complete installation wizard.
+- Open DHCP post-install configuration.
+- Authorize the DHCP server in Active Directory.
+- Confirm the DHCP service is running.
 
-**` Overview: `**
-  - The DHCP Server role was installed through Server Manager to enable automatic IP address assignment for domain-joined clients. This setup allows the domain controller to distribute network configuration settings such as IP address, subnet mask, gateway, and DNS. It supports consistent connectivity and simplifies network management across the Active Directory environment.<br><br>
+**`Overview:`**
 
-<p align="center">Configuring DHCP Scope and Network Options in Active Directory:</strong></p><br>
-<p align="center">
-<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/607cab9c-2168-442e-8c41-fbfea0440f98" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/da7ef310-4619-4d77-840d-1e3071c55fcd" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/f5e71db1-143b-4fad-ad28-fd597dd5fa86" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/afdcca0d-d0d9-44aa-aed6-e2e2a1a275cc" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/b44ae450-9b93-4604-a12e-1515d939766a" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/93504523-378e-46b5-b784-ad6d20bc53c5" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/6a84c80a-049b-4516-b14f-7be054d70e59" /><br><br>
+The DHCP Server was installed on the Domain Controller to assign IP settings automatically to domain clients. It distributes IP address, subnet mask, DNS, and gateway settings to maintain a consistent network configuration across the environment.
+<br>
+<p align="center"><strong>Configuring DHCP Scope and Network Options in Active Directory:</strong></p>
+<p align="center"><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/607cab9c-2168-442e-8c41-fbfea0440f98" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/da7ef310-4619-4d77-840d-1e3071c55fcd" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/f5e71db1-143b-4fad-ad28-fd597dd5fa86" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/afdcca0d-d0d9-44aa-aed6-e2e2a1a275cc" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/b44ae450-9b93-4604-a12e-1515d939766a" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/93504523-378e-46b5-b784-ad6d20bc53c5" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/6a84c80a-049b-4516-b14f-7be054d70e59" />
 
-**` Domain Controller baseline from Phase 1: `**
-  - Domain Controller IP: **192.168.56.10**<br>
-  - Subnet mask: **255.255.255.0**<br>
-  - DNS server: **192.168.56.10**<br>
+**`Domain Controller baseline from Phase 1:`**
+- Domain Controller IP: **192.168.56.10**
+- Subnet mask: **255.255.255.0**
+- DNS server: **192.168.56.10**
   
-Active Directory Domain Services is already installed and functional.<br>
-Host-Only network used for isolated lab communication.<br>
-These settings define the core infrastructure DHCP must support.<br>
+Active Directory Domain Services is already installed and functional.
+Host-Only network used for isolated lab communication.
+These settings define the core infrastructure DHCP must support.
 
-**` DHCP Scope Configuration (Client Addressing Layer) `**
-  - Open DHCP Management Console.<br>
-  - Expand IPv4 and create a new scope.<br>
-  - Set scope name: Lab Client Scope.<br>
-  - Define IP range: **192.168.56.100 to 192.168.56.200**<br>
-  - Set subnet mask: **255.255.255.0**<br>
-  - Add exclusion range: **192.168.56.10** (Domain Controller static IP).<br>
-  - Set lease duration for lab usage, example 8 days.<br>
+**`DHCP Scope Configuration (Client Addressing Layer)`**
+- Open DHCP Management Console.
+- Expand IPv4 and create a new scope.
+- Set scope name: Lab Client Scope.
+- Define IP range: **192.168.56.100 to 192.168.56.200**
+- Set subnet mask: **255.255.255.0**
+- Add exclusion for **192.168.56.10** to prevent IP conflict with the Domain Controller.
+- Set the lease duration for lab usage, for example, 8 days.
 
-**` DHCP Options Configuration (Network Services Layer)`**
-  - Set default gateway.
-      - Leave blank for an isolated Host-Only network.<br>
-  - Set only if NAT internet access is required.<br>
-  - Set DNS server.<br>
-  - **192.168.56.10** (Domain Controller).<br>
-  - Set domain name.<br>
-  - Match Active Directory domain created in Phase 1.<br>
-  - Apply and activate the scope.<br>
+**`DHCP Options Configuration (Network Services Layer)`**
+- Set default gateway.
+  - Leave blank for an isolated Host-Only network.
+- Set only if NAT internet access is required.
+- Set the DNS server to **192.168.56.10** (Domain Controller).
+- Set the domain name.
+- Match the Active Directory domain created in Phase 1.
+- Apply and activate the scope.
 
-**` Overview: `**
-  - DHCP was configured on the domain controller using the existing Phase 1 network setup. The Domain Controller used a static IP of 192.168.56.10 with DNS set to itself, supporting Active Directory and domain services within a Host-Only isolated network.<br>
-  - A DHCP scope was created to assign client IP addresses from 192.168.56.100 to 192.168.56.200 with a 255.255.255.0 subnet mask. The Domain Controller IP was excluded to prevent conflicts, and a lease duration was set for address management.<br>
-  - DHCP options were configured to match the domain environment. The default gateway was left blank due to the isolated network design. DNS was set to 192.168.56.10, and the Active Directory domain name was applied so that clients receive the correct domain configuration automatically.<br><br>
+**`Overview:`**
 
-<p align="center">Testing DHCP Configuration on Client Machine:</strong></p><br>
-<p align="center">
-<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/bde15900-84b0-4026-9495-1ca98820edd9" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/3529e415-68ff-46c6-987f-df3eec74bbe3" /><br>
- <p align="left">
-<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/2175c445-0f47-47d6-a077-0b807b6e74fc" />&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/4bd4f186-ddf2-4ab2-a978-356e72228b54" />&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/8670c98a-b4e8-4288-88b2-79be96cb404c" /><br>
+DHCP was configured on the domain controller using the existing Phase 1 network setup. The Domain Controller used a static IP of 192.168.56.10 with DNS set to itself, supporting Active Directory and domain services within a Host-Only isolated network. A DHCP scope was created to assign client IP addresses from 192.168.56.100 to 192.168.56.200 with a 255.255.255.0 subnet mask. The Domain Controller IP was excluded to prevent conflicts, and a lease duration was set for address management. DHCP options were configured to match the domain environment. The default gateway was left blank due to the isolated network design. DNS was set to 192.168.56.10, and the Active Directory domain name was applied so that clients receive the correct domain configuration automatically.
+<br>
+<p align="center"><strong>Testing DHCP Configuration on Client Machine:</strong></p>
+<p align="center"><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/bde15900-84b0-4026-9495-1ca98820edd9" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/3529e415-68ff-46c6-987f-df3eec74bbe3" />
+<p align="center"><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/2175c445-0f47-47d6-a077-0b807b6e74fc" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/4bd4f186-ddf2-4ab2-a978-356e72228b54" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/8670c98a-b4e8-4288-88b2-79be96cb404c" />
 
-**` Overview: `**
-  - Client testing confirmed DHCP assigned a valid IP from the 192.168.56.100–200 range. The client received the correct subnet, and the DNS was set to 192.168.56.10. Connectivity to the domain controller and Active Directory services worked as expected.<br>
+**`Overview:`**
 
-**` Key Tasks Completed: `**
-  - Installed the DHCP Server role using Server Manager.<br>
-  - Configured a DHCP server within an Active Directory environment.<br>
-  - Created IPv4 DHCP scope for client IP assignment.<br>
-  - Defined IP range **192.168.56.100 to 192.168.56.200**<br>
-  - Set subnet mask to **255.255.255.0**<br>
-  - Excluded Domain Controller static IP **192.168.56.10**<br>
-  - Configured lease duration for client address allocation.<br>
-  - Set DNS server option to **192.168.56.10**<br>
-  - Applied the Active Directory domain name in the DHCP options.<br>
-  - Left the default gateway blank due to an isolated Host-Only network.<br>
-  - Activated DHCP scope for client distribution.<br>
-  - Verified DHCP service functionality in the server console.<br>
-  - Tested client machine IP assignment using DHCP.<br>
-  - Confirmed correct subnet, DNS, and domain configuration on client.<br>
-  - Verified communication between client system and Domain Controller.<br>
-  - Confirmed Active Directory connectivity through DHCP configuration.<br>
+Client testing confirmed that DHCP assigned an IP from 192.168.56.100–200. The client received the correct subnet mask and DNS server set to 192.168.56.10. Connectivity to the Domain Controller and Active Directory services was verified.
+<br>
+**`Key Tasks Completed:`**
+- Installed the DHCP Server role using Server Manager.
+- Configured DHCP integration with Active Directory.
+- Created IPv4 DHCP scope for client IP assignment.
+- Defined IP range **192.168.56.100 to 192.168.56.200**
+- Set subnet mask to **255.255.255.0**
+- Excluded Domain Controller static IP **192.168.56.10**
+- Configured lease duration for client address allocation.
+- Set DNS server option to **192.168.56.10**
+- Applied the Active Directory domain name in the DHCP options.
+- Left the default gateway blank due to an isolated Host-Only network.
+- Activated the DHCP scope for client distribution.
+- Verified DHCP service functionality in the server console.
+- Tested client machine IP assignment using DHCP.
+- Confirmed correct subnet, DNS, and domain configuration on client.
+- Verified communication between the client system and the Domain Controller.
+- Confirmed Active Directory connectivity through DHCP configuration.
+<br>
+
 ----------------
+
+
+
+
