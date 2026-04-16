@@ -262,7 +262,7 @@ GPOs link to a Site, Domain, or OU.
 Policies enforce rules; users cannot override them.
 This GPO applies specific controls to manage user behavior and system security.
 
-User Configs:
+**`User Configs:`**
  1. **Prohibit access to Control Panel and Settings** restricts users from changing system configurations.
  2. **Prevent installation from removable media** blocks users from installing unauthorized software from USB devices.
  3. **Removable disks deny write access** stops users from copying or transferring data to external drives.
@@ -271,7 +271,7 @@ User Configs:
  6. **Screen saver timeout of 550 seconds** locks the system after a set idle period.
  7. **Force specific screen saver** standardizes the screen lock behavior across all users.
 
-Computer Configs:
+**`Computer Configs:`**
  1. **Disable Microsoft Defender Antivirus** turns off built-in antivirus protection for lab control or testing scenarios.
  2. **Disable guest accounts** prevents unauthorized or anonymous access to systems.
  3. **Restricted Groups** define who has local administrator rights, ensuring only approved users have elevated access while standard users, such as HR, do not.
@@ -344,234 +344,215 @@ Changes don’t apply until policy refresh or reboot.
 
 ----------------
 
-<h3 align="center"><strong>Phase IV: File Server and Permissions</strong></h3>
+<h2 align="center"><strong>Phase IV: File Server and Permissions</strong></h2>
 
- **` File Servers & Security Permissions in Active Directory Key Concepts: `**
-   - Active Directory uses security groups to control access to shared resources.<br>
-   - NTFS permissions are assigned to AD users and groups for file and folder access.<br>
-   - Share permissions manage access to resources over the network.<br>
-   - Group-based access simplifies permission management and reduces errors.<br>
-   - Least privilege ensures users only have access to required resources.<br>
-   - Organizational Units help align users with the correct security groups.<br>
-   - Permission inheritance applies consistent access control across folders.<br>
-   - Effective permissions are determined by the combination of NTFS and share permissions.<br><br>
+**` File Servers & Security Permissions in Active Directory Key Concepts: `**
+- Active Directory uses security groups to control access to shared resources.
+- NTFS permissions are assigned to AD users and groups for file and folder access.
+- Share permissions manage access to resources over the network.
+- Group-based access simplifies permission management and reduces errors.
+- Least privilege ensures users only have access to required resources.
+- Organizational Units help align users with the correct security groups.
+- Permission inheritance applies consistent access control across folders.
+- Effective permissions are determined by the combination of NTFS and share permissions.
    
-   **`Lab Overview:`**
-  - This phase focuses on creating a file server and controlling access using Active Directory security groups. Shared folders are created on the domain controller or a member server. Permissions are applied to restrict or allow access based on user roles such as HR and Finance. This demonstrates how organizations secure data and enforce least privilege access.<br><br>
+ **`Lab Overview:`**
+ 
+This phase focuses on creating a file server and controlling access using Active Directory security groups. Shared folders are created on the domain controller or a member server. Permissions are applied to restrict or allow access based on user roles such as HR and Finance. This reflects how organizations secure data and enforce least privilege access.
 
- <p align="center"> <strong>File Server Role Installation and Configuration:</strong></p><br>
- <p align="center">
-<img width="700" height="700" alt="Image" src="https://github.com/user-attachments/assets/eeed713d-4e07-4887-97d5-0b18b0fa44a2" /><br>
-<b>The File Server role was already installed and verified through Server Manager under File and Storage Services.</b><br>
+<p align="center"> <strong>File Server Role Installation and Configuration:</strong></p>
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/eeed713d-4e07-4887-97d5-0b18b0fa44a2" />
+  
+The File Server role was already installed and verified through Server Manager under File and Storage Services.
   
 **`Steps to Install File Server Role:`**
-  - Open Server Manager.<br>
-  - Click Manage.<br>
-  - Select Add Roles and Features.<br>
-  - Click Next until you reach Server Roles.<br>
-  - Select File and Storage Services.<br>
-  - Expand and check File Server.<br>
-  - Click Next and then Install.<br>
-  - Wait for installation to complete.<br>
-  - Verify File Server role is installed in Server Manager.<br><br>
+- Open Server Manager.
+- Click Manage.
+- Select Add Roles and Features.
+- Click Next until you reach Server Roles.
+- Select File and Storage Services.
+- Expand and check the File Server.
+- Click Next and then Install.
+- Wait for installation to complete.
+- Verify the File Server role is installed in Server Manager.
+<br>
+<p align="center"> <strong>Installing Windows Server Backup:</strong></p>
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/f340f642-e7f9-4bad-9212-fdfc8488dfec" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/cd6c5150-511d-409c-a430-92c696d12f39" />
 
-<p align="center"> <strong>Installing Windows Server Backup:</strong></p><br>
-<p align="center">
-<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/f340f642-e7f9-4bad-9212-fdfc8488dfec" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/cd6c5150-511d-409c-a430-92c696d12f39" /><br>
-
- A backup drive is created to store copies of file server data. It helps recover files if data is deleted or damaged. It ensures shared resources are protected and can be restored when needed.<br><br>
-
- <p align="center"> <strong>Creating a Backup Drive Using Disk Management:</strong></p><br>
- <p align="center">
-<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/07fb66af-94b1-4ddf-8d86-fe87cd849911" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/a0afe743-4890-4bde-838a-c5c3b0b516ab" /><br>
-<p align="left">
-<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/bf4d27a2-7cf7-4f1a-a706-10b717d380c1" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/ef99be77-2ef6-4005-a4b8-eacff677590e" />
-<p align="center">
-<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/6dad557c-3593-41f0-a769-33c772b69839" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/623c6d25-e452-4233-b87f-dd97272f341e" />
+A backup drive is created to store copies of the file server data. It helps recover files if data is deleted or damaged. It ensures shared resources are protected and can be restored when needed.
+<br>
+<p align="center"> <strong>Creating a Backup Drive Using Disk Management:</strong></p>
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/07fb66af-94b1-4ddf-8d86-fe87cd849911" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/a0afe743-4890-4bde-838a-c5c3b0b516ab" />
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/bf4d27a2-7cf7-4f1a-a706-10b717d380c1" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/ef99be77-2ef6-4005-a4b8-eacff677590e" />
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/6dad557c-3593-41f0-a769-33c772b69839" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/623c6d25-e452-4233-b87f-dd97272f341e" />
  
- **` Steps to Install Windows Backup Server: `**
-  - Open Server Manager.<br>
-  - Click Manage.<br>
-  - Select Add Roles and Features.<br>
-  - Click Next until the Features section.<br>
-  - Scroll and select Windows Server Backup.<br>
-  - Click Next, then Install.<br>
-  - Wait for installation to complete.<br>
-  - Open Tools and confirm Windows Server Backup is available.<br><br>
+**`Steps to Install Windows Server Backup:`**
+- Open Server Manager.
+- Click Manage.
+- Select Add Roles and Features.
+- Click Next until the Features section.
+- Scroll and select Windows Server Backup.
+- Click Next, then Install.
+- Wait for installation to complete.
+- Open Tools and confirm Windows Server Backup is available.
   
- **` Steps to Create a Backup Drive Using Disk Management: `**
-  - Open Disk Management.<br>
-  - Right-click the main drive (usually C:).<br>
-  - Select Shrink Volume.<br>
-  - Enter the amount of space to shrink (example: 20–50 GB).<br>
-  - Click Shrink.<br>
-  - Right-click the new unallocated space.<br>
-  - Select New Simple Volume.<br>
-  - Click Next.<br>
-  - Assign a drive letter (D: or E:).<br>
-  - Name the volume Backup.<br>
-  - Format as NTFS.<br>
-  - Click Finish.<br>
-  - Verify the new drive appears in File Explorer.<br><br>
+**`Steps to Create a Backup Drive Using Disk Management:`**
+- Open Disk Management.
+- Right-click the main drive (usually C:).
+- Select Shrink Volume.
+- Enter the amount of space to shrink (example: 20–50 GB).
+- Click Shrink.
+- Right-click the new unallocated space.
+- Select New Simple Volume.
+- Click Next.
+- Assign a drive letter (D: or E:).
+- Name the volume Backup.
+- Format as NTFS.
+- Click Finish.
+- Verify the new drive appears in File Explorer.
 
-**` Steps to Create a Daily Backup Using Windows Server Backup: `**
-  - Open Server Manager.<br>
-  - Click Tools.<br>
-  - Select Windows Server Backup.<br>
-  - Click Backup Schedule.<br>
-  - Select Full Server or Custom backup.<br>
-  - Choose items to back up if Custom is selected.<br>
-  - Select destination drive (Backup Drive created in Disk Management).<br>
-  - Choose the Daily Backup schedule.<br>
-  - Set backup time (example: 2:00 AM).<br>
-  - Confirm backup destination settings.<br>
-  - Click Finish to apply the schedule.<br>
-  - Verify backup job appears in Windows Server Backup console.<br><br>
+**`Steps to Create a Daily Backup Using Windows Server Backup:`**
+- Open Server Manager.
+- Click Tools.
+- Select Windows Server Backup.
+- Click Backup Schedule.
+- Select Full Server or Custom backup.
+- Choose items to back up if Custom is selected.
+- Select destination drive (Backup Drive created in Disk Management).
+- Choose the Daily Backup schedule.
+- Set backup time (example: 2:00 AM).
+- Confirm backup destination settings.
+- Click Finish to apply the schedule.
+- Verify backup job appears in Windows Server Backup console.
 
-**` Overview: `**
-  - This phase focuses on setting up backup and recovery for the file server. Windows Server Backup was installed to enable system protection. A backup drive was created using Disk Management by shrinking existing storage and formatting a new NTFS volume. A daily backup schedule was configured to capture the system state or selected data. This ensures critical server data and configurations can be restored after failure, corruption, or accidental deletion.<br><br>
-
-<p align="center"> <strong>Creating and Configuring Shared Folders:</strong></p><br>
-<p align="center">
-<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/40c50c92-dae7-4ec7-96c4-69212255eb29" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/8feaa51c-c0b5-4289-afc1-21f82f6875cf" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/74eabb85-f985-4cab-9c41-9710396cca79" /><br><br>
+**`Overview:`**
+- This setup protects server data by enabling scheduled backups and recovery of files, system state, and configurations after failure, corruption, or accidental deletion.
+<br>
+<p align="center"> <strong>Creating and Configuring Shared Folders:</strong></p>
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/40c50c92-dae7-4ec7-96c4-69212255eb29" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/8feaa51c-c0b5-4289-afc1-21f82f6875cf" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/74eabb85-f985-4cab-9c41-9710396cca79" />
 
 **`Steps to Create Shared Folders and Set Permissions:`**
-  - **Open File Explorer:**
-      - Go to the data drive (example D:).<br>
-      - Right-click and select New → Folder.<br>
-      - Create folders (HR, Finance, IT, Accounts).<br>
-  - **Set Share Permissions:**
-      - Right-click folder → Properties.<br>
-      - Open the Sharing tab. <br>
-      - Click Advanced Sharing.<br>
-      - Enable Share this folder.<br>
-      - Click Permissions.<br>
-      - Assign permissions (Read, Change, Full Control).<br>
-      - Click Apply and OK.<br><br>
+- **Open File Explorer:**
+  - Go to the data drive (example D:).
+  - Right-click and select New → Folder.
+  - Create folders (HR, Finance, IT, Accounts).
+- **Set Share Permissions:**
+  - Right-click folder → Properties.
+  - Open the Sharing tab.
+  - Click Advanced Sharing.
+  - Enable Share this folder.
+  - Click Permissions.
+  - Assign permissions (Read, Change, Full Control).
+  - Click Apply and OK.
       
-**` Overview: `**
-  - Shared folders were created on the data drive for departmental use, including HR, Finance, IT, and Accounts. Each folder was configured for network sharing through Advanced Sharing settings. Access permissions were assigned to control user access based on department roles, ensuring secure and organized file access across the network.<br><br>
-
-<p align="center"> <strong>Creating Shared Folder Organizational Unit (OU) and Security Group Management:</strong></p><br>
-<p align="center">
-<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/3c78aef8-edc7-49c3-8879-8704af66dea4" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/8f49f78f-cc6e-421e-8c78-64bad1062391" /><br>
- <p align="left">
-<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/65d0c525-abd3-4102-a54b-cea95889db73" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/3b956647-3c83-4e6c-ad4b-c651c187c546" /><br>
- <p align="center">
- <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/4036a79f-e094-4608-ac6a-388fdbd8b1e2" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/719522c2-c8ac-44f3-8398-7d4612ff27ed" /><br>
- <p align="left">
- <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/530770f7-bc21-4330-9ada-e57cb2b4690b" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/327b2356-b521-4933-95b8-96a0e97776f8" /><br><br>
+**`Overview:`**
+- Departmental shared folders were created and configured for network access. Permissions were assigned based on role to ensure secure and organized access across the environment.
+<br>
+<p align="center"> <strong>Creating Shared Folder Organizational Unit (OU) and Security Group Management:</strong></p>
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/3c78aef8-edc7-49c3-8879-8704af66dea4" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/8f49f78f-cc6e-421e-8c78-64bad1062391" />
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/65d0c525-abd3-4102-a54b-cea95889db73" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/3b956647-3c83-4e6c-ad4b-c651c187c546" />
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/4036a79f-e094-4608-ac6a-388fdbd8b1e2" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/719522c2-c8ac-44f3-8398-7d4612ff27ed" />
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/530770f7-bc21-4330-9ada-e57cb2b4690b" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/327b2356-b521-4933-95b8-96a0e97776f8" />
 
 **`Creating Organizational Unit and Security Groups for Shared Folder Access Control:`**
-  - Opened Server Manager on the domain controller.<br>
-  - Launched Active Directory Users and Computers.<br>
-  - Right-clicked the domain and created a new Organizational Unit named Shared Folders.<br>
-  - Opened the new OU and created security groups for HR, Finance, IT, and Accounts.<br>
-  - Set group type to Security and scope to Global.<br>
-  - Named each group based on department function for clear identification.<br>
-  - Added user accounts to the matching department security groups.<br>
-  - Checked each user’s properties to confirm correct group membership.<br>
-  - Verified the OU structure and groups appeared correctly in Active Directory.<br>
-  - Prepared the groups for use in shared folder permission assignment.<br>
+- Opened Server Manager on the domain controller.
+- Launched Active Directory Users and Computers.
+- Right-clicked the domain and created a new Organizational Unit named Shared Folders.
+- Opened the new OU and created security groups for HR, Finance, IT, and Accounts.
+- Set group type to Security and scope to Global.
+- Named each group based on department function for clear identification.
+- Added user accounts to the matching department security groups.
+- Checked each user’s properties to confirm correct group membership.
+- Verified the OU structure and groups appeared correctly in Active Directory.
+- Prepared the groups for use in shared folder permission assignment.
 
-**` Overview: `**
-  - An Organizational Unit (OU) was created to organize shared folder resources within Active Directory. Security groups were then created and managed to control access for different departments. Users were assigned to the appropriate groups, allowing centralized permission management for shared resources and supporting consistent access control across the environment.<br><br>
- 
-<p align="center"> <strong>Assigning Security Permissions:</strong></p><br>
+**`Overview:`**
+- An Organizational Unit was created to organize shared resources. Security groups were configured for each department, and users were assigned accordingly, enabling centralized and consistent access control.
+<br>
+<p align="center"> <strong>Assigning Security Permissions:</strong></p>
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/bdad6646-39c6-470a-aa6e-9f2b8e9daa81" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/e8738a95-67e9-4140-b5e2-610048f97aa1" />
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/16daffe8-b492-4062-aaad-7da239b2a230" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/e3fad763-c6ff-4c3e-8bd9-f7bcaf2e24e2" />
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/b239eb7f-adf9-4177-9fc0-218eca17bd94" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/0c570cd1-64c0-43e7-b222-ffa6777a4e6b" />
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/d6c28c0a-d5aa-4960-ae14-1d49e6670121" />
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/5488558b-5fe7-43a7-8af1-8361be63d7bb" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/1de0ccd2-39f0-4450-9976-118e5e133351" />
+
+**`Assigning NTFS Permissions to the Main Shared Folder and All Subfolders with Inheritance Control:`**
+- Opened File Explorer on the file server.
+- Navigated to the shared data drive containing department folders.
+- Right-clicked a department folder and selected Properties.
+- Opened the Security tab to view NTFS permissions.
+- Clicked Edit to modify permission entries.
+- Added domain security groups for each department.
+- Assigned Read, Modify, or Full Control based on role requirements.
+- Applied changes and confirmed permission entries were updated.
+- Opened Advanced Security Settings to review inheritance configuration.
+- Verified permissions propagated to subfolders and files.
+- Repeated the process for each department folder shown in the images.
+- Confirmed correct group-based access across all shared folders.
+- Ensured permissions were assigned only through security groups and not directly to users.
+
+**`Overview:`**
+- NTFS permissions were configured on the main shared folder and applied across all subfolders to enforce controlled access. Inheritance was disabled to prevent unwanted parent permissions while retaining SYSTEM and Administrators. Default permissions were removed, and department security groups were assigned specific access levels. This design enforces least privilege and ensures access is controlled through group membership.
+<br>
+<p align="center"> <strong>Mapping Network Drives Using Group Policy:</strong></p>
+<p align="center"><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/e2eacfe0-a387-4881-9317-9493ba0e75ed" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/82817d58-e8f5-4507-acaf-a029c9c0f44b" />
+<p align="center"><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/8d62824a-e425-4638-a6a1-e2c031e4536f" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/2ae5fc16-bd91-4e6f-bf0f-52f7001eed9b" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/6cbfa668-8d85-4ec6-bd43-c38fdf961247" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/b33b5a37-891b-47c6-ac89-70ada3b7b597" />
+<p align="center"><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/41507a48-0235-40cb-9c9a-321e9d416e5f" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/ec840f08-aa59-40e7-bdb6-b1738526f96b" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/ab81cc1e-b7c6-4373-9a9a-41ed56355e5d" />
+
+**`Mapping Network Drives Using Group Policy for Centralized Access:`**
+- Opened Group Policy Management from Server Manager Tools.
+- Navigated to the domain and located the appropriate Organizational Unit containing users.
+- Right-clicked the OU and selected Create a GPO in this domain and Link it here.
+- Named the policy based on the department drive mapping purpose.
+- Right-clicked the new GPO and selected Edit to open Group Policy Management Editor.
+- Navigated to User Configuration → Preferences → Windows Settings → Drive Maps.
+- Right-clicked Drive Maps and selected New → Mapped Drive.
+- Set the action to Create to ensure the drive maps for users.
+- Entered the shared folder path using UNC format, such as \ServerName\HR.
+- Assigned a drive letter for the mapped drive.
+- Enabled options such as Reconnect and labeled the drive for clarity.
+- Used Item-level targeting to apply the drive map to specific security groups.
+- Repeated the process for each department's shared folder shown in the images.
+- Closed the editor and ensured the GPO remained linked to the correct OU.
+- Verified the mapped drives appeared on user systems after the Group Policy update.
+
+**`Overview:`**
+- Group Policy was used to map network drives for department shared folders. A new GPO was created and linked to the appropriate organizational unit. Drive Maps settings were configured under User Configuration to point users to specific shared folder paths using UNC naming. Drive letters were assigned for easy access, and item-level targeting was used to apply each drive to the correct security group. This setup ensured users received automatic access to their department network drives based on group membership.
+<br>
+<p align="center"> <strong>Verifying Network Drive Access on Client Machine:</strong></p>
 <p align="center">
-<img width="475" height="475" alt="Image" src="https://github.com/user-attachments/assets/bdad6646-39c6-470a-aa6e-9f2b8e9daa81" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="Image" src="https://github.com/user-attachments/assets/e8738a95-67e9-4140-b5e2-610048f97aa1" /><br>
-<p align="left">
-<img width="475" height="475" alt="Image" src="https://github.com/user-attachments/assets/16daffe8-b492-4062-aaad-7da239b2a230" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="Image" src="https://github.com/user-attachments/assets/e3fad763-c6ff-4c3e-8bd9-f7bcaf2e24e2" /><br>
-<p align="center">
-<img width="475" height="475" alt="Image" src="https://github.com/user-attachments/assets/b239eb7f-adf9-4177-9fc0-218eca17bd94" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="Image" src="https://github.com/user-attachments/assets/0c570cd1-64c0-43e7-b222-ffa6777a4e6b" /><br>
-<p align="center">
-<img width="900" height="900" alt="Image" src="https://github.com/user-attachments/assets/d6c28c0a-d5aa-4960-ae14-1d49e6670121" /><br><br>
-<p align="left">
- <img width="475" height="475" alt="Image" src="https://github.com/user-attachments/assets/5488558b-5fe7-43a7-8af1-8361be63d7bb" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/1de0ccd2-39f0-4450-9976-118e5e133351" /><br>
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/9ea6a613-4969-4e9f-8156-9c9e23173a3f" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/378d8a8f-c153-4e8a-8670-1021c0e1b948" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/05979eec-fc60-40fe-a887-1dfbea520cec" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/25176253-6dac-4575-adaf-1f6c2f6cefce" />
 
-**` Assigning NTFS Permissions to the Main Shared Folder and All Subfolders with Inheritance Control: `**
-  - Opened File Explorer on the file server.<br>
-  - Navigated to the shared data drive containing department folders.<br>
-  - Right-clicked a department folder and selected Properties.<br>
-  - Opened the Security tab to view NTFS permissions.<br>
-  - Clicked Edit to modify permission entries.<br>
-  - Added domain security groups for each department.<br>
-  - Assigned Read, Modify, or Full Control based on role requirements.<br>
-  - Applied changes and confirmed permission entries were updated.<br>
-  - Opened Advanced Security Settings to review inheritance configuration.<br>
-  - Verified permissions propagated to subfolders and files.<br>
-  - Repeated the process for each department folder shown in the images.<br>
-  - Confirmed correct group-based access across all shared folders.<br>
+**`Overview:`**
+- Network drive access was verified on a client machine using a domain user account. The system successfully applied Group Policy settings, automatically mapping the correct departmental drives in File Explorer. Each mapped drive was accessed to confirm connectivity to the proper shared folders. Permission controls were validated by confirming that access matched the user’s security group while restricting unauthorized folders. This verified that Group Policy, shared folder permissions, and Active Directory security groups were working together correctly.
 
-**` Overview: `**
-  - NTFS permissions were configured on the main shared folder and applied across all subfolders to enforce controlled access. Inheritance was disabled to prevent unwanted parent permissions, while essential entries such as SYSTEM and Administrators were retained. Unnecessary default permissions were removed, and department security groups were added with specific access levels based on role requirements. Permissions were verified to ensure consistent and secure access across all shared folders.<br><br>
+**`Key Tasks Completed:`**
+- Installed and configured the File Server role.
+- Implemented Windows Server Backup with scheduled daily backups.
+- Created and configured a dedicated backup drive using Disk Management.
+- Built departmental shared folders for HR, Finance, IT, and Accounts.
+- Configured share permissions for controlled network access.
+- Designed and implemented an Organizational Unit for shared resources.
+- Created and managed security groups for role-based access control.
+- Assigned users to appropriate security groups.
+- Configured NTFS permissions using least privilege principles.
+- Disabled inheritance and converted permissions to explicit entries.
+- Removed default permissions and secured access using group-based controls.
+- Applied and verified permission propagation across subfolders.
+- Created and linked a Group Policy Object for drive mapping.
+- Configured mapped network drives using UNC paths and drive letters.
+- Applied item-level targeting based on security group membership.
+- Deployed Group Policy settings to client systems.
+- Verified mapped drives and enforced access restrictions on client machines.
+- Validated integration of Active Directory, Group Policy, NTFS, and share permissions.
 
-<p align="center"> <strong>Mapping Network Drives Using Group Policy:</strong></p><br>
-<p align="center">
-<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/e2eacfe0-a387-4881-9317-9493ba0e75ed" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/82817d58-e8f5-4507-acaf-a029c9c0f44b" /><br>
-<p align="left">
-<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/8d62824a-e425-4638-a6a1-e2c031e4536f" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/2ae5fc16-bd91-4e6f-bf0f-52f7001eed9b" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/6cbfa668-8d85-4ec6-bd43-c38fdf961247" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/b33b5a37-891b-47c6-ac89-70ada3b7b597" /><br>
-<p align="center">
-<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/41507a48-0235-40cb-9c9a-321e9d416e5f" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/ec840f08-aa59-40e7-bdb6-b1738526f96b" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/ab81cc1e-b7c6-4373-9a9a-41ed56355e5d" /><br><br>
+This lab demonstrates centralized file access control using Active Directory, NTFS permissions, and Group Policy, ensuring secure, role-based access across the network.
 
-**` Mapping Network Drives Using Group Policy for Centralized Access: `**
-  - Opened Group Policy Management from Server Manager Tools.<br>
-  - Navigated to the domain and located the appropriate Organizational Unit containing users.<br>
-  - Right-clicked the OU and selected Create a GPO in this domain and Link it here.<br>
-  - Named the policy based on the department drive mapping purpose.<br>
-  - Right-clicked the new GPO and selected Edit to open Group Policy Management Editor.<br>
-  - Navigated to User Configuration → Preferences → Windows Settings → Drive Maps.<br>
-  - Right-clicked Drive Maps and selected New → Mapped Drive.<br>
-  - Set the action to Create to ensure the drive maps for users.<br>
-  - Entered the shared folder path using UNC format such as \ServerName\HR.<br>
-  - Assigned a drive letter for the mapped drive.<br>
-  - Enabled options such as Reconnect and labeled the drive for clarity.<br>
-  - Used Item-level targeting to apply the drive map to specific security groups.<br>
-  - Repeated the process for each department's shared folder shown in the images.<br>
-  - Closed the editor and ensured the GPO remained linked to the correct OU.<br>
-  - Verified the mapped drives appeared on user systems after the Group Policy update.<br>
+<br>
 
-**` Overview: `**
-  - Group Policy was used to map network drives for department shared folders. A new GPO was created and linked to the appropriate organizational unit. Drive Maps settings were configured under User Configuration to point users to specific shared folder paths using UNC naming. Drive letters were assigned for easy access, and item-level targeting was used to apply each drive to the correct security group. This setup ensured users received automatic access to their department network drives based on group membership.<br>
-
-<p align="center"> <strong>Verifying Network Drive Access on Client Machine:</strong></p><br>
-<p align="center">
-<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/9ea6a613-4969-4e9f-8156-9c9e23173a3f" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/378d8a8f-c153-4e8a-8670-1021c0e1b948" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/05979eec-fc60-40fe-a887-1dfbea520cec" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="image" src="https://github.com/user-attachments/assets/25176253-6dac-4575-adaf-1f6c2f6cefce" /><br>
-
-**` Overview: `**
-  - Network drive access was verified on a client machine using a domain user account. The system successfully applied Group Policy settings, automatically mapping the correct departmental drives in File Explorer. Each mapped drive was accessed to confirm connectivity to the proper shared folders. Permission controls were validated by confirming that access matched the user’s security group while restricting unauthorized folders. This verified that Group Policy, shared folder permissions, and Active Directory security groups were working together correctly.<br>
-
-**` Key Tasks Completed: `**
-  - Installed and verified the File Server role in Server Manager.<br>
-  - Installed Windows Server Backup feature for system protection.<br>
-  - Created a dedicated backup drive using Disk Management.<br>
-  - Configured a daily backup schedule using Windows Server Backup.<br>
-  - Created departmental shared folders on the data drive (HR, Finance, IT, Accounts).<br>
-  - Enabled file sharing using Advanced Sharing settings.<br>
-  - Configured share permissions for controlled network access.<br>
-  - Created an Organizational Unit in Active Directory for shared resources.<br>
-  - Created and configured security groups for each department.<br>
-  - Added users to correct security groups for role-based access.<br>
-  - Verified group membership inside Active Directory Users and Computers.<br>
-  - Configured NTFS permissions on shared folders.<br>
-  - Disabled inheritance on the main shared folder.<br>
-  - Converted inherited permissions into explicit permissions.<br>
-  - Removed default unnecessary permissions such as Users and Authenticated Users.<br>
-  - Retained SYSTEM and Administrators for system control.<br>
-  - Applied department security groups with Read, Modify, or Full Control access.<br>
-  - Propagated and verified permissions across subfolders.<br>
-  - Created and linked a Group Policy Object for drive mapping.<br>
-  - Configured Drive Maps under User Configuration in Group Policy.<br>
-  - Assigned UNC paths for each departmental shared folder.<br>
-  - Assigned drive letters for mapped network drives.<br>
-  - Enabled reconnect and labeling options for usability.<br>
-  - Applied item-level targeting for security group-based mapping.<br>
-  - Updated and applied Group Policy settings to client machines.<br>
-  - Verified mapped network drives on a client system.<br>
-  - Tested access to confirm correct permissions and restrictions.<br>
-  - Confirmed integration of Active Directory, Group Policy, NTFS, and share permissions.<br><br>
 ----------------
-<h3 align="center"><strong>Phase V: DHCP Configuration and Network Address Assignment</strong></h3>
+
+<h2 align="center"><strong>Phase V: DHCP Configuration and Network Address Assignment</strong></h2>
 
 **` DHCP Key Concepts: `**
    - DHCP automatically assigns IP addresses to client devices.<br>
