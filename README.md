@@ -169,200 +169,182 @@ This phase builds and manages the Active Directory structure. Organizational Uni
 - Verified domain integration by logging in with a domain user account.
 - Confirmed authentication and access control through the domain controller.
 <br>
+
 ----------------
 
-<h3 align="center"><strong>Phase III: Group Policy Management</strong></h3>
+<h2 align="center"><strong>Phase III: Group Policy Management</strong></h2>
 
-**` GPOs Key Concepts: `** 
-  -  Group Policy provides centralized control over users and computers in an Active Directory domain.<br>
-  -  Group Policy Objects apply settings to users or computers based on OU structure.<br>
-  -  Policies control security settings, password rules, and account lockout behavior.<br>
-  -  User and computer restrictions enforce system limits such as blocking Control Panel or Command Prompt.<br>
-  -  GPOs apply through domain and OU linking for targeted management.<br>
-  -  Policy updates occur through refresh cycles or manual update using gpupdate /force.<br>
-  -  Group Policy reduces manual configuration and ensures consistent system settings across all machines.<br><br>
+**`GPOs Key Concepts:`** 
+-  Group Policy centralizes configuration for users and computers in an Active Directory domain.
+-  GPOs link to sites, domains, or OUs to apply settings based on structure.
+-  Security settings include password rules, account lockout policies, and system restrictions.
+-  User and computer policies enforce limits such as blocking Control Panel or Command Prompt.
+-  Policy application follows Active Directory inheritance and updates through refresh cycles or gpupdate /force.
+-  This approach reduces manual configuration and maintains consistent system settings across the domain.
 
-**` Lab Overview: `** 
--  This phase focuses on managing security and configuration across the Active Directory domain using Group Policy. Group Policy Objects are created and linked to Organizational Units to apply centralized settings to users and computers. Security policies such as password requirements, account lockout rules, and system restrictions are configured to enforce consistent security standards. Policies are tested by updating client machines and verifying that settings apply to domain users and systems, ensuring centralized control and enforcement across the network.<br><br>
+<b>**`Lab Overview:`** </b>
 
-**`Creating and Managing Group Policy Objects (GPOs):`** <br/>
+This phase manages security and settings using Group Policy. GPOs are created and linked to Organizational Units to apply settings to users and computers. Security settings include password rules, account lockout policies, and system settings including Control Panel access and software installation limits. Client machines are updated and tested to confirm policy application across domain users and systems.
 
-<p align="center"> <strong> Step 1:</strong></p><br>
+<h3 align="center">Creating and Managing Group Policy Objects (GPOs):</h3>
 
-<p align="center"> <strong>Open Group Policy Management Console (GPMC):</strong></p><br>
+**`Step 1:`**
+<p align="center"> <strong>Open Group Policy Management Console (GPMC):</strong></p>
 
-<p align="center">
-<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/d5f6afef-92ab-4267-b066-69e5b7936d80" />&nbsp;&nbsp;&nbsp;&nbsp; <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/91a3e434-729b-4d52-9f6f-51cf396abcee" /><br><br>
-<b>This opens the main console where all GPOs are managed.</b>
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/d5f6afef-92ab-4267-b066-69e5b7936d80" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/91a3e434-729b-4d52-9f6f-51cf396abcee" />
+
+This opens the console used to manage GPOs.
    
-**` Steps: `**
-   - Open Server Manager.<br>
-   - Click Tools at the top right.<br>
-   - Select Group Policy Management.<br><br>
+**`Steps:`**
+- Open Server Manager.
+- Click Tools at the top right.
+- Select Group Policy Management.
+<br>
 
-<p align="center"> <strong>Step 2:</strong></p><br>
-
-<p align="center"> <strong>Navagating to Domain:</strong></p><br>
+**`Step 2:`**
+<p align="center"> <strong>Navigating the Domain Structure:</strong></p>
  
-<p align="center">
-<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/4add2bf9-1b1b-41eb-a45f-7ab3398cf66c" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/680fb357-3011-4fcd-b8bc-e5e20e56092a" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/5f8aa4ee-5ffc-47ae-be02-87aabb72dc73" /><br><br>
-<b>GPOs are always linked to Site, Domain, or OU.</br>
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/4add2bf9-1b1b-41eb-a45f-7ab3398cf66c" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/680fb357-3011-4fcd-b8bc-e5e20e56092a" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/5f8aa4ee-5ffc-47ae-be02-87aabb72dc73" />
+
+GPOs link to a Site, Domain, or OU.
    
-**` Expand: `**<br>
-   - Forest.<br>
-   - Domains.<br>
-   - Click your Domain Name.<br>
+**`Expand:`**
+- Forest.
+- Domains.
+- Click your Domain Name.
 
-**` Decide where you want the policy: `**<br>
-  - Domain Level (**applies to all**).<br>
-  - OR specific OU (**Organizational Unit**).<br><br>
+**`Decide where you want the policy:`**
+- Domain Level (**applies to all**).
+- OR specific OU (**Organizational Unit**).
+<br>
 
-<p align="center"> <strong>Step 3:</strong></p><br>
-<p align="center"> <strong>Creating a New GPO:</strong></p><br>
+**`Step 3:`**
+<p align="center"> <strong>Creating a New GPO:</strong></p>
 
-<p align="center">
-<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/ceb9d0af-eb68-4ea7-ad19-4aaec78e56d9" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/9e9484a2-1e6a-4ae9-8864-afce8cef43c3" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/8ff5cf62-1c2e-4f1f-b122-0b6b0e2da0be" /><br><br>
- <b>There are two ways to create a new GPO.</br> 
- 
-- <b>The first option creates the GPO first and links it to a domain or OU later.</b><br>
-- <b>The second option creates and links the GPO at the same time.</b><br>
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/ceb9d0af-eb68-4ea7-ad19-4aaec78e56d9" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/9e9484a2-1e6a-4ae9-8864-afce8cef43c3" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/8ff5cf62-1c2e-4f1f-b122-0b6b0e2da0be" />
+
+ <b>There are two ways to create a new GPO.
+   - The first option creates the GPO first and links it to a domain or OU later.
+   - The second option creates and links the GPO at the same time.
    
-**` Method I: `**
-   - Click Group Policy Objects.<br>
-   - Right click New.<br>
-   - Enter a name.<br>
-   - Click OK.<br>
+**`Method I:`**
+   - Click Group Policy Objects.
+   - Right click New.
+   - Enter a name.
+   - Click OK.
 
-**` Method II: `**
-  - Right click the OU or Domain.<br>
-  - Click Create a GPO in this domain, and Link it here.<br>
-  - Enter a name.<br>
-  - Click OK.<br><br>
+**`Method II:`**
+  - Right click the OU or Domain.
+  - Click Create a GPO in this domain, and Link it here.
+  - Enter a name.
+  - Click OK.
+ <br>
  
-<p align="center"> <strong>Step 4:</strong></p><br>
-<p align="center"> <strong>Edit & Configure the GPO:</strong></p><br>
+**`Step 4:`**
+<p align="center"> <strong>Edit & Configure the GPO:</strong></p>
 
-<p align="center">
-<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/15355fc4-0930-41b1-8cc7-3152a458d673" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/738faf81-80ed-4d85-b26d-b24597460978" /<br><br>
-<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/88d276ec-9219-4906-aec4-771f3403123d" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/6e2782ac-53cb-4e8b-9e04-8d5fe488bff9" /><br><br>
- <p align="left">
-<img width="400" height="900" alt="Image" src="https://github.com/user-attachments/assets/52145cf0-28ae-4550-bced-192c7830d085" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/77632a7c-1497-4063-a914-108c515f3c78" /><br><br>
- <p align="center">
-<img width="400" height="900" alt="Image" src="https://github.com/user-attachments/assets/1cfc50df-c360-4d85-b4c4-f8a5dba8a9c2" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/ec425090-5043-44cd-a70a-f5a1eba96502" /><br><br>
- <p align="left">
-<img width="400" height="900" alt="Image" src="https://github.com/user-attachments/assets/eae31dbe-119c-440c-a9a0-851d4c8c8510" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/fb55fa37-10fb-43a1-b983-bf70ba114d36" /><br><br>
- <p align="center">
-<img width="600" height="400" alt="Image" src="https://github.com/user-attachments/assets/7ab2eabf-dff9-43c1-adc9-2b019d134ca1" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/9fb44df3-3399-46ad-beff-6e06676c2f93" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/26f35b09-ade2-4019-bece-09da589ba157" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/c4db19b2-43c2-45bb-84c4-1632f4240018" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/e9a7d021-87d7-4960-99e5-bcae67c7df27" /><br><br>
-  <p align="left">
-<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/ec985f7c-7a94-4d6b-ae27-7566da294235" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/af9c6661-e493-498a-8a4d-5514dbfa9cd0" /><br><br>
- <p align="center">
- <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/e3ef3bc4-4799-4779-a395-574b3a64f78f" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/b4e9aeb8-ef06-429a-be21-2512980ec910" /><br><br>
-  <p align="left">
- <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/69ad2293-2547-4dac-948a-aad90204f7b1" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/b7ad1d61-2be8-4b47-ae05-e075b7fa18c9" /><br><br>
-   <p align="center">
- <img width="900" height="900" alt="Image" src="https://github.com/user-attachments/assets/eeec96a3-1a6e-497b-9ede-ce2ddafc12eb" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="900" height="900" alt="Image" src="https://github.com/user-attachments/assets/dde6a927-0261-4527-b26c-d53b55bebbe3" /><br><br>
+<p align="center"> <strong>User Configuration Part 1</strong> </p> <p align="center"> <img width="500" height="500" src="https://github.com/user-attachments/assets/15355fc4-0930-41b1-8cc7-3152a458d673" /> <img width="500" height="500" src="https://github.com/user-attachments/assets/738faf81-80ed-4d85-b26d-b24597460978" /> <img width="500" height="500" src="https://github.com/user-attachments/assets/88d276ec-9219-4906-aec4-771f3403123d" /> <img width="500" height="500" src="https://github.com/user-attachments/assets/6e2782ac-53cb-4e8b-9e04-8d5fe488bff9" /> <img width="500" height="500" src="https://github.com/user-attachments/assets/ec425090-5043-44cd-a70a-f5a1eba96502" /> <img width="500" height="500" src="https://github.com/user-attachments/assets/eae31dbe-119c-440c-a9a0-851d4c8c8510" /> </p> <p align="center"> <strong>User Configuration Part 2</strong> </p> <p align="center"> <img width="500" height="500" src="https://github.com/user-attachments/assets/fb55fa37-10fb-43a1-b983-bf70ba114d36" /> <img width="500" height="500" src="https://github.com/user-attachments/assets/7ab2eabf-dff9-43c1-adc9-2b019d134ca1" /> <img width="500" height="500" src="https://github.com/user-attachments/assets/9fb44df3-3399-46ad-beff-6e06676c2f93" /> </p> <p align="center"> <strong>Computer Configuration Part 1</strong> </p> <p align="center"> <img width="500" height="500" src="https://github.com/user-attachments/assets/26f35b09-ade2-4019-bece-09da589ba157" /> <img width="500" height="500" src="https://github.com/user-attachments/assets/c4db19b2-43c2-45bb-84c4-1632f4240018" /> <img width="500" height="500" src="https://github.com/user-attachments/assets/e9a7d021-87d7-4960-99e5-bcae67c7df27" /> <img width="500" height="500" src="https://github.com/user-attachments/assets/ec985f7c-7a94-4d6b-ae27-7566da294235" /> </p> <p align="center"> <strong>Computer Configuration Part 2</strong> </p> <p align="center"> <img width="500" height="500" src="https://github.com/user-attachments/assets/af9c6661-e493-498a-8a4d-5514dbfa9cd0" /> <img width="500" height="500" src="https://github.com/user-attachments/assets/e3ef3bc4-4799-4779-a395-574b3a64f78f" /> <img width="500" height="500" src="https://github.com/user-attachments/assets/b4e9aeb8-ef06-429a-be21-2512980ec910" /> <img width="500" height="500" src="https://github.com/user-attachments/assets/69ad2293-2547-4dac-948a-aad90204f7b1" /> <img width="500" height="500" src="https://github.com/user-attachments/assets/b7ad1d61-2be8-4b47-ae05-e075b7fa18c9" /> <img width="500" height="500" src="https://github.com/user-attachments/assets/eeec96a3-1a6e-497b-9ede-ce2ddafc12eb" /> <img width="500" height="500" src="https://github.com/user-attachments/assets/dde6a927-0261-4527-b26c-d53b55bebbe3" /> </p>
  
-**` Steps: `**
-   - Right-click the GPO.<br>
-   - Click Edit.<br>
-   - **`Configure settings under:`**<br>
-       - Computer Configuration (**applies on startup**).<br>
-       - User Configuration (**applies on login**).<br>
-   - **`Navigate inside:`**<br>
-       - Policies → Administrative Templates.<br>
-   - Double-click any setting.<br>
-   - **`Choose:`**<br>
-       - Enabled.<br>
-       - Disabled.<br>
-   - Click Apply → OK.<br>
+**`Steps:`**
+- Right-click the GPO.
+- Click Edit.
+- **`Configure settings under:`**
+  - Computer Configuration (**applies on startup**).
+  - User Configuration (**applies on login**).
+- **`Navigate inside:`**
+  - Policies → Administrative Templates.
+  - Double-click any setting.
+- **`Choose:`**
+  - Enabled.
+  - Disabled.
+- Click Apply → OK.
 
-**` Policies enforce rules; users cannot override them `**.<br>
-   
-**` This GPO applies specific controls to manage user behavior and system security `**.<br>
+Policies enforce rules; users cannot override them.
+This GPO applies specific controls to manage user behavior and system security.
 
-User Configs:<br>
-1. **Prohibit access to Control Panel and Settings** restricts users from changing system configurations.<br>
-2. **Prevent installation from removable media** blocks users from installing unauthorized software from USB devices.<br>
-3. **Removable disks deny write access** stops users from copying or transferring data to external drives.<br>
-4. **Screen saver enforcement** ensures systems lock after inactivity.<br>
-5. **Password-protected screen saver** requires authentication to regain access.<br>
-6. **Screen saver timeout of 550 seconds** locks the system after a set idle period.<br>
-7. **Force specific screen saver** standardizes the screen lock behavior across all users.<br>
+User Configs:
+ 1. **Prohibit access to Control Panel and Settings** restricts users from changing system configurations.
+ 2. **Prevent installation from removable media** blocks users from installing unauthorized software from USB devices.
+ 3. **Removable disks deny write access** stops users from copying or transferring data to external drives.
+ 4. **Screen saver enforcement** ensures systems lock after inactivity.
+ 5. **Password-protected screen saver** requires authentication to regain access.
+ 6. **Screen saver timeout of 550 seconds** locks the system after a set idle period.
+ 7. **Force specific screen saver** standardizes the screen lock behavior across all users.
 
-Computer Configs:<br> 
-1. **Disable Microsoft Defender Antivirus** turns off built-in antivirus protection for lab control or testing scenarios.<br>
-2. **Disable guest accounts** prevents unauthorized or anonymous access to systems.<br>
-3. **Restricted Groups** define who has local administrator rights, ensuring only approved users have elevated access while standard users, such as HR, do not.<br>
+Computer Configs:
+ 1. **Disable Microsoft Defender Antivirus** turns off built-in antivirus protection for lab control or testing scenarios.
+ 2. **Disable guest accounts** prevents unauthorized or anonymous access to systems.
+ 3. **Restricted Groups** define who has local administrator rights, ensuring only approved users have elevated access while standard users, such as HR, do not.
      
-**` Overview: `**
-- This Group Policy Object enforces user and system security settings across the domain.<br>
-- **User Configuration** restricts access to Control Panel and system settings, blocks installation from removable media, and denies write access to removable disks. It also enforces screen saver policies, including password protection, a timeout of 550 seconds, and a specific screen saver.<br>
-- **Computer Configuration** disables Microsoft Defender Antivirus and guest accounts to control system access. Restricted Groups are configured to define local administrator membership, ensuring only authorized users have admin rights while standard users, such as HR, are not granted elevated privileges.<br><br>
+**`Overview:`**
+- This Group Policy Object enforces user and system security settings across the domain.
+- **User Configuration** restricts access to Control Panel and system settings, blocks installation from removable media, and denies write access to removable disks. It also enforces screen saver policies, including password protection, a timeout of 550 seconds, and a specific screen saver.
+- **Computer Configuration** disables Microsoft Defender Antivirus and guest accounts to control system access. Restricted Groups are configured to define local administrator membership, ensuring only authorized users have admin rights while standard users, such as HR, are not granted elevated privileges.
+<br>
 
-<p align="center"> <strong>Step 5:</strong></p><br>
-<p align="center"> <strong>Link the GPO (if not already linked):</strong></p><br>
+**`Step 5:`**
+<p align="center"> <strong>Link the GPO (if not already linked):</strong></p>
+
+<p align="center"><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/91c0e541-9a5d-46d2-981c-f39cdc3f8a99" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/b0656635-e263-4feb-bbf6-5c94e4178bc1" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/8650ec29-3938-4476-897d-8e57cacbc1c8" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/43f4af4e-5cb2-4b22-926e-a8c3a7d7da18" />
+
+ **` Steps: `**
+- Right-click OU / Domain.
+- Click Link an Existing GPO.
+- Select your GPO.
+- Click OK.
+
+**`Overview:`**
+- Linking the **HR Lab GPO** to the **`Accounts OU`** applies all configured policies to users and computers within that OU.
+- All accounts in this OU automatically receive restrictions such as limited system access, removable media controls, and enforced screen lock settings.
+- Any new user added to the OU inherits these policies, ensuring consistent and centralized management.
+<br>
+ 
+**`Step 6:`**
+<p align="center"> <strong>Apply / Update the Policy:</strong></p>
 
 <p align="center">
-<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/91c0e541-9a5d-46d2-981c-f39cdc3f8a99" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/b0656635-e263-4feb-bbf6-5c94e4178bc1" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/8650ec29-3938-4476-897d-8e57cacbc1c8" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="450" height="450" alt="Image" src="https://github.com/user-attachments/assets/43f4af4e-5cb2-4b22-926e-a8c3a7d7da18" /><br><br>
-
-**` Overview: `**
-  - Linking the **HR Lab GPO** to the **`Accounts OU`** applies all configured policies to users and computers within that OU.<br>
-  - All accounts in this OU automatically receive restrictions such as limited system access, removable media controls, and enforced screen lock settings.<br>
-  - Any new user added to the OU inherits these policies, ensuring consistent and centralized management.<br>
+<img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/5a6cbdea-7a54-45cf-b8c6-fa860fd5b2e7" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/ebffa626-405b-4adc-a374-09c2d8e3275d" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/8817d1dc-06da-4ac0-a247-210e1f856f0b" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/95b131f7-4841-4644-8e81-395ce0725d9a" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/af3593f9-d7c6-42ec-abb8-e5c6771a661d" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/d952509f-0987-4812-97e7-edd01a75de6b" /><img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/a9b7163d-3add-458d-b59a-430d41950bd7" />
  
-**` Steps: `**
-- Right-click OU / Domain.<br>
-- Click Link an Existing GPO.<br>
-- Select your GPO.<br>
-- Click OK.<br><br>
+**`Steps:`**
 
-<p align="center"> <strong>Step 6:</strong></p><br>
-<p align="center"> <strong>Apply / Update the Policy:</strong></p><br>
+On Client Machine:
+- Open Command Prompt.
+- Run:
+  - gpupdate /force.
+- Restart if required.
 
-<p align="center">
-<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/5a6cbdea-7a54-45cf-b8c6-fa860fd5b2e7" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="Image" src="https://github.com/user-attachments/assets/ebffa626-405b-4adc-a374-09c2d8e3275d" /><br><br>
- <p align="left">
-<img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/8817d1dc-06da-4ac0-a247-210e1f856f0b" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="Image" src="https://github.com/user-attachments/assets/95b131f7-4841-4644-8e81-395ce0725d9a" /><br><br>
-  <p align="center">
- <img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/af3593f9-d7c6-42ec-abb8-e5c6771a661d" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="475" height="475" alt="Image" src="https://github.com/user-attachments/assets/d952509f-0987-4812-97e7-edd01a75de6b" />&nbsp;&nbsp;&nbsp;&nbsp;<img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/a9b7163d-3add-458d-b59a-430d41950bd7" />
- 
-**` Steps: `**
+Changes don’t apply until policy refresh or reboot.
 
-On Client Machine:<br>
-  - Open Command Prompt.<br>
-  - Run:<br>
-      - gpupdate /force.<br>
-  - Restart if required.<br>
+**`Overview:`**
+  - Group Policy changes are applied to the client machine using gpupdate /force. This forces the system to download and apply the latest policies from Active Directory. A restart ensures all settings fully take effect.
 
-**`Changes don’t apply until policy refresh or reboot`**.<br>
+**`Key Tasks Completed:`**
+- Opened Group Policy Management Console (**GPMC**) from Server Manager.
+- Navigated Active Directory structure (**Forest → Domains → LAB.local**).
+- Created new Group Policy Objects (**GPOs**) using both creation methods (**standalone and linked creation**).
+- Edited GPO settings through Group Policy Management Editor.
+- Configured **User Configuration policies**:
+  - Prohibit access to Control Panel and Settings.
+  - Prevent installation from removable media.
+  - Deny write access to removable disks.
+  - Enforce screen saver settings.
+  - Enable password-protected screen saver.
+  - Set screen saver timeout to 550 seconds.
+  - Force specific screen saver (**scrnsaver.scr**).
+- Configured **Computer Configuration policies**:
+  - Disabled Microsoft Defender Antivirus.
+  - Disabled Guest accounts.
+  - Configured Restricted Groups to control local administrators (**HR users excluded from admin rights**).
+- Linked HR Lab GPO to the Accounts OU.
+- Verified policy scope by applying GPO at OU level.
+- Forced policy update on client machine using gpupdate /force.
+- Restarted client to apply all Group Policy settings.
+- Confirmed policy enforcement across domain-joined systems.
+<br>
 
-**` Overview: `**
-  - Group Policy changes are applied to the client machine using gpupdate /force. This forces the system to download and apply the latest policies from Active Directory. A restart ensures all settings fully take effect.<br>
-
-**` Key Tasks Completed: `**
-  - Opened Group Policy Management Console (**GPMC**) from Server Manager.<br>
-  - Navigated Active Directory structure (**Forest → Domains → LAB.local**).
-  - Created new Group Policy Objects (**GPOs**) using both creation methods (**standalone and linked creation**).
-  - Edited GPO settings through Group Policy Management Editor.<br>
-  - Configured **User Configuration policies**:<br>
-      - Prohibit access to Control Panel and Settings.<br>
-      - Prevent installation from removable media.<br>
-      - Deny write access to removable disks.<br>
-      - Enforce screen saver settings.<br>
-      - Enable password-protected screen saver.<br>
-      - Set screen saver timeout to 550 seconds.<br>
-      - Force specific screen saver (**scrnsaver.scr**).
-  - Configured **Computer Configuration policies**:
-     - Disabled Microsoft Defender Antivirus.<br>
-     - Disabled Guest accounts.<br>
-     - Configured Restricted Groups to control local administrators (**HR users excluded from admin rights**).
-  - Linked HR Lab GPO to the Accounts OU.<br>
-  - Verified policy scope by applying GPO at OU level.<br>
-  - Forced policy update on client machine using gpupdate /force.<br>
-  - Restarted client to apply all Group Policy settings.<br>
-  - Confirmed policy enforcement across domain-joined systems.<br><br>
 ----------------
-  <h3 align="center"><strong>Phase IV: File Server and Permissions</strong></h3>
+
+<h3 align="center"><strong>Phase IV: File Server and Permissions</strong></h3>
 
  **` File Servers & Security Permissions in Active Directory Key Concepts: `**
    - Active Directory uses security groups to control access to shared resources.<br>
