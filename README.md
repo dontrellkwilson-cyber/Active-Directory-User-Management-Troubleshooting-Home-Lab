@@ -514,7 +514,7 @@ NTFS permissions were configured on the main shared folder and applied across al
 - Navigated to User Configuration → Preferences → Windows Settings → Drive Maps.
 - Right-clicked Drive Maps and selected New → Mapped Drive.
 - Set the action to Create to ensure the drive maps for users.
-- Entered the shared folder path using UNC format, such as \ServerName\HR.
+- Entered the shared folder path using UNC format, such as \\ServerName\HR.
 - Assigned a drive letter for the mapped drive.
 - Enabled options such as Reconnect and labeled the drive for clarity.
 - Used Item-level targeting to apply the drive map to specific security groups.
