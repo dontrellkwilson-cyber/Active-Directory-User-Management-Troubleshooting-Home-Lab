@@ -681,17 +681,14 @@ This phase automates user provisioning using PowerShell. Instead of manually cre
 <br><br>
 <h3 align="center">Step 1:</h3>
 <p align="center"> <strong>Prepare User Data (CSV File):</strong></p>
-<p align="center"><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/cc3e2911-ae09-4bd9-8539-e7effff777a9" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/61041cb2-3181-4289-a323-ea5f8793a891" />
+<p align="center">
 
 <p align="center"> <strong>User data is stored in a CSV file to define account attributes.</strong></p>
 
 <b>`Active Directory User Import CSV Using Notepad:`</b>
 - Open Notepad from the Start menu.
 - Type the CSV header on the first line:
-  - EmployeeID,GivenName,Surname,SamAccountName,UserPrincipalName,Department,Title,OU,Password
 - Add user records on new lines using the same column order:
-  - 1001,Alicia,Carter,acarter,acarter@lab.local
-  - ,HR,HR Specialist,OU=HR,DC=LAB,DC=local,P@ssw0rd
 - Keep each field separated by commas and avoid extra spaces.
 - Save file as NewUsers_Batch01.csv and set file type to All Files, choose UTF-8 encoding.
 - Place the file in a folder like F:\AD_Import for easy access.
@@ -703,7 +700,7 @@ This phase automates user provisioning using PowerShell. Instead of manually cre
 <br>
 <h3 align="center">Step 2:</h3>
 <p align="center"> <strong>Import Active Directory Module:</strong></p>
-<p align="center"><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/bb06170d-8699-4b70-8357-95b66fbdff98" />
+<p align="center">
 
 <p align="center"> <strong>PowerShell needs the AD module to manage directory services.</strong></p>
 <p align="center"> <strong>Start-Transcript records all PowerShell activity into a log file for tracking. Stop-Transcript ends the logging session and saves the file.</strong></p>
@@ -713,9 +710,7 @@ This phase automates user provisioning using PowerShell. Instead of manually cre
 <br>
 <h3 align="center">Step 3:</h3>
 <p align="center"> <strong>Create Bulk User Script:</strong></p>
-<p align="center"><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/e19c8684-a5f2-45dd-b8f7-4bdf6b000d38" />
-
-
+<p align="center">
+ 
 <b>`PowerShell Script:`</b>
 
-<pre> Import-Module ActiveDirectory $Users = Import-Csv "F:\AD_Import\NewUsers_Batch01.csv" foreach ($User in $Users) { New-ADUser -Name "$($User.GivenName) $($User.Surname)" -GivenName $User.GivenName -Surname $User.Surname -DisplayName $User.DisplayName -SamAccountName $User.SamAccountName -UserPrincipalName "$($User.SamAccountName)@lab.local" -Path $User.OU -Title $User.Title -Department $User.Department -Office $User.Office -AccountPassword (ConvertTo-SecureString $User.Password -AsPlainText -Force) -Enabled $true -ChangePasswordAtLogon $true } </pre>
