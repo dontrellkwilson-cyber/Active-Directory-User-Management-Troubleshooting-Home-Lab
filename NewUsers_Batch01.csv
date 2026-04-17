@@ -1,0 +1,44 @@
+EmployeeID,GivenName,Surname,DisplayName,SamAccountName,UserPrincipalName,Department,Title,Office,OU,Password
+1001,Alicia,Carter,Alicia Carter,acarter,acarter@LAB.local,HR,HR Specialist,Orlando HQ,OU=HR,DC=LAB,DC=local,P@ssw0rd123
+1002,Brandon,Hill,Brandon Hill,bhill,bhill@LAB.local,HR,HR Assistant,Orlando HQ,OU=HR,DC=LAB,DC=local,P@ssw0rd123
+1003,Nicole,Adams,Nicole Adams,nadams,nadams@LAB.local,HR,HR Coordinator,Orlando HQ,OU=HR,DC=LAB,DC=local,P@ssw0rd123
+1004,Steven,Price,Steven Price,sprice,sprice@LAB.local,HR,HR Generalist,Orlando HQ,OU=HR,DC=LAB,DC=local,P@ssw0rd123
+1005,Lauren,Scott,Lauren Scott,lscott,lscott@LAB.local,HR,HR Specialist,Orlando HQ,OU=HR,DC=LAB,DC=local,P@ssw0rd123
+1006,Marcus,Green,Marcus Green,mgreen,mgreen@LAB.local,HR,HR Assistant,Orlando HQ,OU=HR,DC=LAB,DC=local,P@ssw0rd123
+1007,Teresa,Bell,Teresa Bell,tbell,tbell@LAB.local,HR,HR Coordinator,Orlando HQ,OU=HR,DC=LAB,DC=local,P@ssw0rd123
+1008,Jordan,King,Jordan King,jking,jking@LAB.local,HR,HR Generalist,Orlando HQ,OU=HR,DC=LAB,DC=local,P@ssw0rd123
+1009,Hannah,Wright,Hannah Wright,hwright,hwright@LAB.local,HR,HR Specialist,Orlando HQ,OU=HR,DC=LAB,DC=local,P@ssw0rd123
+1010,Derek,Young,Derek Young,dyoung,dyoung@LAB.local,HR,HR Assistant,Orlando HQ,OU=HR,DC=LAB,DC=local,P@ssw0rd123
+1011,Olivia,Baker,Olivia Baker,obaker,obaker@LAB.local,HR,HR Coordinator,Orlando HQ,OU=HR,DC=LAB,DC=local,P@ssw0rd123
+1012,Ethan,Rivera,Ethan Rivera,erivera,erivera@LAB.local,HR,HR Generalist,Orlando HQ,OU=HR,DC=LAB,DC=local,P@ssw0rd123
+1013,Sophia,Mitchell,Sophia Mitchell,smitchell,smitchell@LAB.local,HR,HR Specialist,Orlando HQ,OU=HR,DC=LAB,DC=local,P@ssw0rd123
+1014,Noah,Turner,Noah Turner,turnern,turnern@LAB.local,Finance,Finance Analyst,Orlando HQ,OU=Finance,DC=LAB,DC=local,P@ssw0rd123
+1015,Grace,Phillips,Grace Phillips,gphillips,gphillips@LAB.local,Finance,Accountant,Orlando HQ,OU=Finance,DC=LAB,DC=local,P@ssw0rd123
+1016,Caleb,Campbell,Caleb Campbell,ccampbell,ccampbell@LAB.local,Finance,Budget Analyst,Orlando HQ,OU=Finance,DC=LAB,DC=local,P@ssw0rd123
+1017,Zoe,Parker,Zoe Parker,zparker,zparker@LAB.local,Finance,Finance Specialist,Orlando HQ,OU=Finance,DC=LAB,DC=local,P@ssw0rd123
+1018,Isaac,Edwards,Isaac Edwards,iedwards,iedwards@LAB.local,Finance,Accountant,Orlando HQ,OU=Finance,DC=LAB,DC=local,P@ssw0rd123
+1019,Lily,Collins,Lily Collins,lcollins,lcollins@LAB.local,Finance,Finance Analyst,Orlando HQ,OU=Finance,DC=LAB,DC=local,P@ssw0rd123
+1020,Mason,Stewart,Mason Stewart,mstewart,mstewart@LAB.local,Finance,Budget Analyst,Orlando HQ,OU=Finance,DC=LAB,DC=local,P@ssw0rd123
+1021,Ella,Sanchez,Ella Sanchez,esanchez,esanchez@LAB.local,Finance,Accountant,Orlando HQ,OU=Finance,DC=LAB,DC=local,P@ssw0rd123
+1022,Logan,Morris,Logan Morris,lmorris,lmorris@LAB.local,Finance,Finance Specialist,Orlando HQ,OU=Finance,DC=LAB,DC=local,P@ssw0rd123
+1023,Chloe,Rogers,Chloe Rogers,crogers,crogers@LAB.local,Finance,Accountant,Orlando HQ,OU=Finance,DC=LAB,DC=local,P@ssw0rd123
+1024,Ryan,Cooper,Ryan Cooper,rcooper,rcooper@LAB.local,Finance,Finance Analyst,Orlando HQ,OU=Finance,DC=LAB,DC=local,P@ssw0rd123
+1025,Victoria,Reed,Victoria Reed,vreed,vreed@LAB.local,Finance,Finance Manager,Orlando HQ,OU=Finance,DC=LAB,DC=local,P@ssw0rd123
+1026,Daniel,Morgan,Daniel Morgan,dmorgan,dmorgan@LAB.local,IT,IT Support Specialist,Orlando HQ,OU=IT,DC=LAB,DC=local,P@ssw0rd123
+1027,Ava,Hughes,Ava Hughes,ahughes,ahughes@LAB.local,IT,IT Support Specialist,Orlando HQ,OU=IT,DC=LAB,DC=local,P@ssw0rd123
+1028,Samuel,Murphy,Samuel Murphy,smurphy,smurphy@LAB.local,IT,Systems Administrator,Orlando HQ,OU=IT,DC=LAB,DC=local,P@ssw0rd123
+1029,Mia,Watson,Mia Watson,mwatson,mwatson@LAB.local,IT,Network Technician,Orlando HQ,OU=IT,DC=LAB,DC=local,P@ssw0rd123
+1030,Luke,Bennett,Luke Bennett,lbennett,lbennett@LAB.local,IT,IT Support Specialist,Orlando HQ,OU=IT,DC=LAB,DC=local,P@ssw0rd123
+1031,Emily,Foster,Emily Foster,efoster,efoster@LAB.local,IT,Systems Administrator,Orlando HQ,OU=IT,DC=LAB,DC=local,P@ssw0rd123
+1032,Jacob,Gray,Jacob Gray,jgray,jgray@LAB.local,IT,Network Technician,Orlando HQ,OU=IT,DC=LAB,DC=local,P@ssw0rd123
+1033,Isabella,Diaz,Isabella Diaz,idiaz,idiaz@LAB.local,IT,IT Support Specialist,Orlando HQ,OU=IT,DC=LAB,DC=local,P@ssw0rd123
+1034,Benjamin,Wood,Benjamin Wood,bwood,bwood@LAB.local,IT,Systems Administrator,Orlando HQ,OU=IT,DC=LAB,DC=local,P@ssw0rd123
+1035,Natalie,Brooks,Natalie Brooks,nbrooks,nbrooks@LAB.local,IT,Network Technician,Orlando HQ,OU=IT,DC=LAB,DC=local,P@ssw0rd123
+1036,Henry,Kelly,Henry Kelly,hkelly,hkelly@LAB.local,IT,IT Support Specialist,Orlando HQ,OU=IT,DC=LAB,DC=local,P@ssw0rd123
+1037,Amelia,Ward,Amelia Ward,award,award@LAB.local,IT,IT Support Specialist,Orlando HQ,OU=IT,DC=LAB,DC=local,P@ssw0rd123
+1038,Christopher,Cox,Christopher Cox,ccox,ccox@LAB.local,IT,Systems Administrator,Orlando HQ,OU=IT,DC=LAB,DC=local,P@ssw0rd123
+1039,Grace,Diaz,Grace Diaz,gdiaz,gdiaz@LAB.local,IT,Network Technician,Orlando HQ,OU=IT,DC=LAB,DC=local,P@ssw0rd123
+1040,William,Foster,William Foster,wfoster,wfoster@LAB.local,Accounts,Accounts Clerk,Orlando HQ,OU=Accounts,DC=LAB,DC=local,P@ssw0rd123
+1041,Madison,Hughes,Madison Hughes,mhughes,mhughes@LAB.local,Accounts,Accounts Clerk,Orlando HQ,OU=Accounts,DC=LAB,DC=local,P@ssw0rd123
+1042,James,Allen,James Allen,jallen,jallen@LAB.local,Accounts,Accountant,Orlando HQ,OU=Accounts,DC=LAB,DC=local,P@ssw0rd123
+1043,Emma,Nelson,Emma Nelson,enelson,enelson@LAB.local,Accounts,Accounts Clerk,Orlando HQ,OU=Accounts,DC=LAB,DC=local,P@ssw0rd123
