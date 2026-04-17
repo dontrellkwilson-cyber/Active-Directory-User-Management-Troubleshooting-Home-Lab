@@ -679,9 +679,25 @@ Client testing confirmed that DHCP assigned an IP from 192.168.56.100–200. The
 
 This phase automates user provisioning using PowerShell. Instead of manually creating accounts in Active Directory Users and Computers, a script reads user data from a CSV file and creates multiple accounts at once. This improves efficiency, ensures consistency, and reflects real-world system administration practices.
 <br><br>
-<b>`Step 1:`</b>
-<h3 align="center">Prepare User Data: (CSV File)</h3>
+<h3 align="center">Step 1:</h3>
+<p align="center"> <strong>Prepare User Data (CSV File):</strong></p>
 <p align="center"><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/cc3e2911-ae09-4bd9-8539-e7effff777a9" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/61041cb2-3181-4289-a323-ea5f8793a891" />
 
-User data is stored in a CSV file to define account attributes.
+<p align="center"> <strong>User data is stored in a CSV file to define account attributes.</strong></p>
 
+<b>`Active Directory User Import CSV Using Notepad:`</b>
+- Open Notepad from the Start menu.
+- Type the CSV header on the first line:
+  - EmployeeID,GivenName,Surname,SamAccountName,UserPrincipalName,Department,Title,OU,Password
+- Add user records on new lines using the same column order:
+  - 1001,Alicia,Carter,acarter,acarter@lab.local
+  - ,HR,HR Specialist,OU=HR,DC=LAB,DC=local,P@ssw0rd
+- Keep each field separated by commas and avoid extra spaces.
+- Save file as NewUsers_Batch01.csv and set file type to All Files, choose UTF-8 encoding.
+- Place the file in a folder like F:\AD_Import for easy access.
+
+<b>`Key Points:`</b>
+- Each row represents one user.
+- Fields map directly to Active Directory attributes.
+- Passwords should meet domain policy requirements.
+<br>
