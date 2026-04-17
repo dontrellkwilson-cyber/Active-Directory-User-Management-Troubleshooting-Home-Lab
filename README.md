@@ -713,6 +713,9 @@ This phase automates user provisioning using PowerShell. Instead of manually cre
 <br>
 <h3 align="center">Step 3:</h3>
 <p align="center"> <strong>Create Bulk User Script:</strong></p>
-<p align="center"><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/42d932d7-88dd-4844-a57f-e62d6f9d696c" />
+<p align="center"><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/e19c8684-a5f2-45dd-b8f7-4bdf6b000d38" />
+
 
 <b>`PowerShell Script:`</b>
+
+<pre> Import-Module ActiveDirectory $Users = Import-Csv "F:\AD_Import\NewUsers_Batch01.csv" foreach ($User in $Users) { New-ADUser -Name "$($User.GivenName) $($User.Surname)" -GivenName $User.GivenName -Surname $User.Surname -DisplayName $User.DisplayName -SamAccountName $User.SamAccountName -UserPrincipalName "$($User.SamAccountName)@lab.local" -Path $User.OU -Title $User.Title -Department $User.Department -Office $User.Office -AccountPassword (ConvertTo-SecureString $User.Password -AsPlainText -Force) -Enabled $true -ChangePasswordAtLogon $true } </pre>
