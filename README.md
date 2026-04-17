@@ -681,6 +681,7 @@ This phase automates user provisioning using PowerShell. Instead of manually cre
 <br><br>
 <b>`Step 1:`</b>
 <h3 align="center">Prepare User Data: (CSV File)</h3>
+<p align="center"><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/cc3e2911-ae09-4bd9-8539-e7effff777a9" /><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/61041cb2-3181-4289-a323-ea5f8793a891" />
 
 User data is stored in a CSV file to define account attributes.
 
