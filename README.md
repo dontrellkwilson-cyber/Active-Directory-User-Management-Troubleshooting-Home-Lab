@@ -701,3 +701,18 @@ This phase automates user provisioning using PowerShell. Instead of manually cre
 - Fields map directly to Active Directory attributes.
 - Passwords should meet domain policy requirements.
 <br>
+<h3 align="center">Step 2:</h3>
+<p align="center"> <strong>Import Active Directory Module:</strong></p>
+<p align="center"><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/bb06170d-8699-4b70-8357-95b66fbdff98" />
+
+<p align="center"> <strong>PowerShell needs the AD module to manage directory services.</strong></p>
+<p align="center"> <strong>Start-Transcript records all PowerShell activity into a log file for tracking. Stop-Transcript ends the logging session and saves the file.</strong></p>
+
+<b>`Command:`</b>
+- Import-Module ActiveDirectory
+<br>
+<h3 align="center">Step 3:</h3>
+<p align="center"> <strong>Create Bulk User Script:</strong></p>
+<p align="center"><img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/42d932d7-88dd-4844-a57f-e62d6f9d696c" />
+
+<b>`PowerShell Script:`</b>
