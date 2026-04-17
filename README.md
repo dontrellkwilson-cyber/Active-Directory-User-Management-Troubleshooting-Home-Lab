@@ -638,6 +638,7 @@ DHCP was configured on the domain controller using the existing Phase 1 network 
 
 Client testing confirmed that DHCP assigned an IP from 192.168.56.100–200. The client received the correct subnet mask and DNS server set to 192.168.56.10. Connectivity to the Domain Controller and Active Directory services was verified.
 <br>
+
 **`Key Tasks Completed:`**
 - Installed the DHCP Server role using Server Manager.
 - Configured DHCP integration with Active Directory.
@@ -659,7 +660,27 @@ Client testing confirmed that DHCP assigned an IP from 192.168.56.100–200. The
 
 ----------------
 
-<h2 align="center"><strong>Phase VI: PowerShell Automation</strong></h2>
+<h2 align="center"><strong>Phase VI: PowerShell Automation (Bulk User Creation)</strong></h2>
 
+<b>`PowerShell Automation Key Concepts:`</b>
+- PowerShell automates repetitive administrative tasks in Active Directory.
+- Bulk user creation reduces manual errors and saves time.
+- CSV files store structured user data for easy import.
+- Scripts enforce consistency across user accounts.
+- Automation supports scalability in enterprise environments.
 
+<b>`Domain Controller vs RSAT Use:`</b>
+- You can run Active Directory PowerShell commands directly on a Domain Controller because the AD module installs with AD DS, so RSAT is not required on the server.
+- RSAT is used on a client machine to manage Active Directory remotely. It installs AD tools and the PowerShell module for domain administration.
+- Using RSAT on a client matches real enterprise environments because admins manage Active Directory from a separate workstation instead of logging into the Domain Controller.
+- This lab uses the Domain Controller to keep the setup simple while still demonstrating automation and bulk user creation.
+
+<b>`Lab Overview:`</b>
+
+This phase automates user provisioning using PowerShell. Instead of manually creating accounts in Active Directory Users and Computers, a script reads user data from a CSV file and creates multiple accounts at once. This improves efficiency, ensures consistency, and reflects real-world system administration practices.
+<br><br>
+<b>`Step 1:`</b>
+<h3 align="center">Prepare User Data: (CSV File)</h3>
+
+User data is stored in a CSV file to define account attributes.
 
