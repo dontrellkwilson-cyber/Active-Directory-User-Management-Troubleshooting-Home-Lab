@@ -664,21 +664,43 @@ Client testing confirmed that DHCP assigned an IP from 192.168.56.100–200. The
 
 <b>`PowerShell Automation Key Concepts:`</b>
 - PowerShell automates repetitive administrative tasks in Active Directory.
-- Bulk user creation reduces manual errors and saves time.
-- CSV files store structured user data for easy import.
-- Scripts enforce consistency across user accounts.
-- Automation supports scalability in enterprise environments.
+- Bulk user creation reduces manual errors and improves consistency.
+- CSV files provide structured input for automation.
+- Scripts enforce naming standards, OU placement, and account configuration.
+- Automation supports scalability and enterprise-level provisioning.
 
-<b>`Domain Controller vs RSAT Use:`</b>
-- You can run Active Directory PowerShell commands directly on a Domain Controller because the AD module installs with AD DS, so RSAT is not required on the server.
-- RSAT is used on a client machine to manage Active Directory remotely. It installs AD tools and the PowerShell module for domain administration.
-- Using RSAT on a client matches real enterprise environments because admins manage Active Directory from a separate workstation instead of logging into the Domain Controller.
-- This lab uses the Domain Controller to keep the setup simple while still demonstrating automation and bulk user creation.
+<b>`Domain Controller vs Secure Admin Workstation (Best Practice):`</b>
+- Domain Controllers should not be used for daily administrative tasks.
+- Administrators should use a dedicated client machine with Remote Server Administration Tools (RSAT).
+- This reduces the attack surface and protects critical infrastructure.
+- Administrative actions are performed remotely while the Domain Controller remains isolated.
+
+This lab uses:
+- **CLIENT02** (Windows 10) → Admin workstation with RSAT
+- **DC02** (Windows Server 2022) → Domain Controller
 
 <b>`Lab Overview:`</b>
 
-This phase automates user provisioning using PowerShell. Instead of manually creating accounts in Active Directory Users and Computers, a script reads user data from a CSV file and creates multiple accounts at once. This improves efficiency, ensures consistency, and reflects real-world system administration practices.
-<br><br>
+This phase automates bulk user creation using PowerShell from a domain-joined client machine (CLIENT02). Instead of logging into the Domain Controller, administrative tasks are performed remotely using RSAT tools.
+
+A CSV file containing user data is imported into PowerShell, and accounts are created in Active Directory with:
+- Department-based OU placement (IT, HR, Finance).
+- Standardized usernames from the CSV dataset.
+- Enforced password policies applied at account creation (including forced password change at first logon).
+<br>
+<h3 align="center">Step 1:</h3> <p align="center"><strong>Install RSAT on CLIENT02:</strong></p>
+<p align="center">
+
+<b>`Steps:`</b>
+- Open Settings.
+- In the Find Settings search box, type → Add an Optional Feature.
+- Click Add a Feature.
+- Search for:
+  - RSAT: Active Directory Domain Services and Lightweight Directory Tools
+- Click Install.
+- Wait for installation to complete.
+
+<b>Verify Installation:</b>
 <h3 align="center">Step 1:</h3>
 <p align="center"> <strong>Prepare User Data (CSV File):</strong></p>
 <p align="center">
